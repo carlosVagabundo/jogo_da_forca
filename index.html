@@ -1,1 +1,123 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Jogo da Forca Ultimate</title><style>body{margin:0;font-family:Arial,sans-serif;background:#0b1020;color:#f5f7ff}main{max-width:1100px;margin:auto;padding:24px}.card{background:#151e36;border:1px solid #304064;border-radius:20px;padding:22px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}button{font:inherit;cursor:pointer;border:0;border-radius:12px;padding:12px 16px;background:#5969ff;color:white}.secondary{background:#263452}.mode{text-align:left;min-height:130px}.row{display:flex;gap:10px;flex-wrap:wrap}.hidden{display:none}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{background:#0d1529;padding:12px;border-radius:12px}.stat b{display:block;font-size:22px}.word{text-align:center;font-size:34px;letter-spacing:8px;margin:25px 0}.keys{display:grid;grid-template-columns:repeat(9,1fr);gap:7px}.keys button{padding:9px 4px;background:#243250}.keys button.used{opacity:.3}.hint{background:#0d1529;padding:12px;border-radius:10px;margin:8px 0}.admin{border:1px solid #9a4054}label{display:block;margin:8px 0 5px;color:#aebbd8}input,select{width:100%;padding:11px;box-sizing:border-box;border-radius:10px;border:1px solid #304064;background:#0b1327;color:white}.field{margin-bottom:12px}.options{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.opt{background:#0d1529;border:1px solid #304064}.opt.selected{outline:2px solid #7180ff}.hang{text-align:center;font-size:80px;min-height:120px;display:grid;place-items:center}.top{display:flex;justify-content:space-between;align-items:center}@media(max-width:800px){.grid,.options{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.keys{grid-template-columns:repeat(7,1fr)}}@media(max-width:500px){.grid,.options{grid-template-columns:1fr}.keys{grid-template-columns:repeat(5,1fr)}}</style></head><body><main><div class="top"><div><h1>⌛ Jogo da Forca Ultimate</h1><p>Versão web modular • pronta para integração com Python.</p></div><b id="status">Menu</b></div><section id="menu" class="card"><h2>Escolha o modo</h2><div class="grid"><button class="mode" onclick="setup('friends')">👥<h3>Jogar com amigos</h3><span>Defina palavra e dicas.</span></button><button class="mode" onclick="setup('random')">🎲<h3>Aleatório</h3><span>Palavras contextualizadas.</span></button><button class="mode" onclick="setup('endless')">♾️<h3>Aleatório crescente</h3><span>Sequência com dificuldade crescente.</span></button></div></section><section id="config" class="card hidden"><h2>Configurações</h2><div class="grid"><div class="field"><label>Tempo</label><select id="time"><option value="30">30 segundos</option><option value="60">1 minuto</option><option value="120">2 minutos</option><option value="180">3 minutos</option><option value="300">5 minutos</option><option value="600">10 minutos</option><option value="900">15 minutos</option><option value="1200">20 minutos</option><option value="1800">30 minutos</option><option value="3600">60 minutos</option><option value="inf">Tempo infinito</option></select></div><div class="field"><label>Idioma / teclado</label><select id="lang"><option value="pt">🇧🇷 Português</option><option value="en">🇺🇸 English</option><option value="es">🇪🇸 Español</option><option value="fr">🇫🇷 Français</option><option value="de">🇩🇪 Deutsch</option><option value="it">🇮🇹 Italiano</option><option value="ja">🇯🇵 日本語</option><option value="ko">🇰🇷 한국어</option><option value="zh">🇨🇳 中文</option><option value="ru">🇷🇺 Русский</option><option value="tr">🇹🇷 Türkçe</option><option value="ar">🇸🇦 العربية</option></select></div><div class="field"><label>Palavra</label><input id="custom" placeholder="No modo aleatório deixe vazio"></div><div class="field"><label>Nome</label><input id="player" placeholder="Jogador"></div></div><h3>Tema</h3><div id="themes" class="options"></div><h3>Dificuldade</h3><div id="diffs" class="options"></div><h3>Tradutor</h3><div class="grid"><div class="field"><label>Origem</label><select id="from"><option value="pt">Português</option><option value="en">Inglês</option><option value="es">Espanhol</option><option value="fr">Francês</option><option value="de">Alemão</option></select></div><div class="field"><label>Destino</label><select id="to"><option value="en">Inglês</option><option value="pt">Português</option><option value="es">Espanhol</option><option value="fr">Francês</option><option value="de">Alemão</option></select></div><div class="field"><label>Texto</label><input id="trText" placeholder="Digite para traduzir"></div><div class="field"><label>Resultado</label><input id="trResult" readonly></div></div><div class="row"><button class="secondary" onclick="translateText()">🌐 Traduzir</button></div><div class="row"><button onclick="start()">▶ Começar</button><button class="secondary" onclick="show('menu')">Voltar</button></div></section><section id="game" class="hidden"><div class="stats"><div class="stat">⏱️ <b id="timer">∞</b><span>Tempo</span></div><div class="stat">❌ <b id="errors">0/8</b><span>Erros</span></div><div class="stat">⭐ <b id="score">0</b><span>Pontos</span></div><div class="stat">🔥 <b id="streak">0</b><span>Sequência</span></div></div><div class="card"><div id="hang" class="hang">🙂</div><div id="word" class="word"></div><div id="hints"></div><div id="keys" class="keys"></div><p>Use também o teclado físico.</p></div><div class="card admin"><div class="row"><b>🔐 Painel Admin</b><button class="secondary" onclick="toggleAdmin()">Abrir/fechar</button></div><div id="adminBody" class="hidden"><div class="field"><label>Senha</label><input id="adminPass" type="password" placeholder="Senha do admin"></div><button onclick="unlock()">Desbloquear</button><div id="adminControls" class="hidden row" style="margin-top:10px"><button onclick="addTime(10)">+10s</button><button onclick="addTime(20)">+20s</button><button onclick="addTime(30)">+30s</button><button onclick="reveal()">Revelar palavra</button><button onclick="removeError()">Remover erro</button><button onclick="hintNext()">Liberar dica</button><button onclick="addScore()">+100 pontos</button><button onclick="resetRound()">Reiniciar rodada</button></div></div></div></section><section id="result" class="card hidden" style="text-align:center"><h1 id="resultIcon"></h1><h2 id="resultTitle"></h2><p id="resultText"></p><div class="row"><button onclick="again()">🔄 Jogar novamente</button><button class="secondary" onclick="show('menu')">🚪 Sair</button></div></section></main><script>const themes=['🎌 Anime','📺 Séries','🎬 Filmes','🧙 Personagens','🎮 Jogos','🐾 Animais','⚽ Esportes','🍕 Comidas','💻 Tecnologia','🌎 Países e Lugares','🔬 Ciência','🎵 Música','🧑‍🔧 Profissões','🌳 Natureza','📚 Livros','🦸 Super-heróis','🏫 Escola','✨ Outros'];const diffs=['🟢 Muito fácil','🟢 Fácil','🟡 Médio','🟠 Difícil','🔴 Muito difícil','🟣 Especialista','⚫ Insano'];const db=[['Naruto','Anime',['Faz parte do universo de Naruto.','É conhecido como um ninja.','Sua história envolve a Vila da Folha.']],['Itachi','Anime',['Faz parte do universo de Naruto.','É irmão mais velho de Sasuke Uchiha.','Pertence ao clã Uchiha.']],['Tanjiro','Anime',['Faz parte do universo de Demon Slayer.','É companheiro de Zenitsu e Inosuke.','Usa técnicas de respiração.']],['Goku','Anime',['Faz parte do universo de Dragon Ball.','É um guerreiro Saiyajin.','Seu rival mais conhecido é Vegeta.']],['Tails','Jogos',['Faz parte do universo de Sonic.','É um dos aliados mais conhecidos de Sonic.','É famoso por usar duas caudas.']],['Minecraft','Jogos',['É um jogo de construção e exploração.','Possui blocos e criaturas.','Tem modos de sobrevivência e criativo.']],['Brasil','Países e Lugares',['É um país da América do Sul.','Tem o português como idioma oficial.','É conhecido pela diversidade cultural e natural.']],['Python','Tecnologia',['É uma linguagem de programação.','É muito usada em automação e ciência de dados.','Seu nome também está ligado a uma cobra.']]];let mode='random',theme=themes[0],diff=diffs[2],word='',hints=[],revealed=0,errors=0,score=0,streak=0,timeLeft=0,timerId=null,guessed=new Set();function show(id){['menu','config','game','result'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));document.getElementById('status').textContent=id==='game'?'Jogando':id==='config'?'Configuração':'Menu'}function setup(m){mode=m;show('config');document.getElementById('custom').disabled=m!=='friends'}function renderOptions(){document.getElementById('themes').innerHTML=themes.map(x=>`<button class="opt ${x===theme?'selected':''}" onclick="theme=this.dataset.v;renderOptions()" data-v="${x}">${x}${x===theme?' ✓':''}</button>`).join('');document.getElementById('diffs').innerHTML=diffs.map(x=>`<button class="opt ${x===diff?'selected':''}" onclick="diff=this.dataset.v;renderOptions()" data-v="${x}">${x}${x===diff?' ✓':''}</button>`).join('')}function pick(){let t=theme.split(' ')[1];let a=db.filter(x=>x[1]===t);if(!a.length)a=db;return a[Math.floor(Math.random()*a.length)]}function start(){word=mode==='friends'?document.getElementById('custom').value.trim():pick()[0];if(!word){alert('Digite uma palavra.');return}let item=db.find(x=>x[0].toLowerCase()===word.toLowerCase());hints=item?item[2]:['Pense no tema escolhido.','A palavra tem relação com o tema da partida.','Observe as letras descobertas para encontrar a resposta.'];revealed=0;errors=0;score=0;streak=0;guessed.clear();let v=document.getElementById('time').value;timeLeft=v==='inf'?Infinity:Number(v);show('game');render();startTimer()}function render(){document.getElementById('word').innerHTML=[...word].map(c=>c===' '?'<span>&nbsp;</span>:`<span>${guessed.has(c.toLocaleLowerCase())?c:'_'}</span>`).join('');document.getElementById('errors').textContent=errors+'/8';document.getElementById('score').textContent=score;document.getElementById('streak').textContent=streak;document.getElementById('hang').textContent=['🙂','😐','😟','😰','😨','😵','🥴','💀','☠️'][errors];document.getElementById('hints').innerHTML=hints.map((h,i)=>`<div class="hint">💡 <b>Dica ${i+1}</b> ${i<revealed?h:'🔒 Dica bloqueada'}</div>`).join('');document.getElementById('keys').innerHTML=[...'abcdefghijklmnopqrstuvwxyzáàãâéêíóôõúçñ'].map(c=>`<button ${guessed.has(c)?'disabled':''} class="${guessed.has(c)?'used':''}" onclick="guess('${c}')">${c.toUpperCase()}</button>`).join('')}function guess(c){if(guessed.has(c))return;guessed.add(c);let chars=[...word].map(x=>x.toLocaleLowerCase());if(chars.includes(c)){score+=10;revealed=Math.min(3,revealed+1)}else{errors++;score=Math.max(0,score-5)}if([...new Set(chars)].every(x=>guessed.has(x))){streak++;score+=50;if(mode==='endless'){word=pick()[0];guessed.clear();errors=0;revealed=0;resetTimer();render()}else finish(true)}else if(errors>=8)finish(false);else render()}function startTimer(){clearInterval(timerId);document.getElementById('timer').textContent=timeLeft===Infinity?'∞':timeLeft+'s';if(timeLeft===Infinity)return;timerId=setInterval(()=>{timeLeft--;document.getElementById('timer').textContent=timeLeft+'s';if(timeLeft<=0)finish(false)},1000)}function resetTimer(){let v=document.getElementById('time').value;timeLeft=v==='inf'?Infinity:Number(v);startTimer()}function finish(win){clearInterval(timerId);show('result');document.getElementById('resultIcon').textContent=win?'🏆':'💀';document.getElementById('resultTitle').textContent=win?'Você acertou!':'Fim de jogo';document.getElementById('resultText').textContent=win?`Pontuação: ${score}`:`A palavra secreta era: ${word}. Pontuação: ${score}`}function again(){start()}function toggleAdmin(){document.getElementById('adminBody').classList.toggle('hidden')}function unlock(){if(document.getElementById('adminPass').value==='27112009')document.getElementById('adminControls').classList.remove('hidden');else alert('Senha incorreta.')}function addTime(n){if(timeLeft!==Infinity){timeLeft+=n;document.getElementById('timer').textContent=timeLeft+'s'}}function reveal(){[...word.toLocaleLowerCase()].forEach(c=>guessed.add(c));revealed=3;render()}function removeError(){if(errors>0)errors--;render()}function hintNext(){revealed=Math.min(3,revealed+1);render()}function addScore(){score+=100;render()}function resetRound(){guessed.clear();errors=0;revealed=0;render();resetTimer()}function translateText(){const t=document.getElementById('trText').value.trim();const from=document.getElementById('from').value,to=document.getElementById('to').value;const d={hello:'olá',olá:'hello',world:'mundo',mundo:'world',friend:'amigo',amigo:'friend',game:'jogo',jogo:'game'};let r=t;if(from!==to)r=d[t.toLocaleLowerCase()]||'Tradução automática básica: use um serviço de tradução externo para frases completas.';document.getElementById('trResult').value=r}document.addEventListener('keydown',e=>{if(e.ctrlKey||e.altKey||e.metaKey)return;if(e.key.length===1)guess(e.key.toLocaleLowerCase())});document.getElementById('lang').addEventListener('change',e=>document.documentElement.lang=e.target.value);renderOptions();</script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Jogo da Forca Ultimate com Python, HTML, CSS e JavaScript">
+  <title>Jogo da Forca Ultimate</title>
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <span class="eyebrow">PROJETO WEB</span>
+        <h1>⌛ Jogo da Forca <span>Ultimate</span></h1>
+        <p class="muted">Versão modular • Python + HTML + CSS + JavaScript</p>
+      </div>
+      <div class="status-pill"><span class="status-dot"></span><strong id="status">Menu</strong></div>
+    </header>
+
+    <section id="menu" class="screen card">
+      <div class="section-heading">
+        <div><span class="eyebrow">COMEÇAR</span><h2>Escolha o modo</h2></div>
+        <div class="mini-badge">8 erros</div>
+      </div>
+      <div class="mode-grid">
+        <button class="mode-card" data-mode="friends">
+          <span class="mode-icon">👥</span><strong>Jogar com amigos</strong>
+          <span>Crie a palavra secreta, nome do jogador e até três dicas.</span>
+        </button>
+        <button class="mode-card" data-mode="random">
+          <span class="mode-icon">🎲</span><strong>Aleatório</strong>
+          <span>Receba palavras contextualizadas de acordo com tema, idioma e dificuldade.</span>
+        </button>
+        <button class="mode-card" data-mode="endless">
+          <span class="mode-icon">♾️</span><strong>Aleatório crescente</strong>
+          <span>Jogue uma sequência sem fim: a dificuldade aumenta conforme sua sequência.</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="config" class="screen card hidden">
+      <div class="section-heading"><div><span class="eyebrow">CONFIGURAÇÃO</span><h2 id="configTitle">Prepare sua partida</h2></div><span class="mini-badge" id="modeBadge">Aleatório</span></div>
+
+      <div class="form-grid four">
+        <label>Tempo<select id="time"></select></label>
+        <label>Idioma / teclado<select id="lang"></select></label>
+        <label>Jogador<input id="player" maxlength="30" placeholder="Digite seu nome"></label>
+        <label>Palavra secreta<input id="custom" maxlength="60" placeholder="Usada apenas no modo com amigos"></label>
+      </div>
+
+      <div id="friendHints" class="hidden">
+        <h3>Suas dicas</h3>
+        <div class="form-grid three">
+          <label>Dica 1<input id="friendHint1" maxlength="160" placeholder="Dica mais fácil"></label>
+          <label>Dica 2<input id="friendHint2" maxlength="160" placeholder="Dica intermediária"></label>
+          <label>Dica 3<input id="friendHint3" maxlength="160" placeholder="Dica mais específica"></label>
+        </div>
+      </div>
+
+      <h3>Tema</h3><div id="themes" class="option-grid"></div>
+      <h3>Dificuldade</h3><div id="diffs" class="option-grid"></div>
+
+      <div class="translator">
+        <div class="section-heading compact"><div><span class="eyebrow">FERRAMENTA</span><h3>Tradutor</h3></div></div>
+        <div class="form-grid four">
+          <label>Origem<select id="from"></select></label>
+          <label>Destino<select id="to"></select></label>
+          <label>Texto<input id="trText" maxlength="300" placeholder="Digite uma palavra ou frase curta"></label>
+          <label>Resultado<input id="trResult" readonly placeholder="Resultado"></label>
+        </div>
+        <button id="translate">🌐 Traduzir</button>
+        <small id="translateStatus" class="muted"></small>
+      </div>
+
+      <div class="actions"><button id="start">▶ Começar partida</button><button class="secondary" id="back">Voltar ao menu</button></div>
+    </section>
+
+    <section id="game" class="screen hidden">
+      <div class="stats">
+        <div><span>⏱️ Tempo</span><b id="timer">∞</b></div>
+        <div><span>❌ Erros</span><b id="errors">0/8</b></div>
+        <div><span>⭐ Pontos</span><b id="score">0</b></div>
+        <div><span>🔥 Sequência</span><b id="streak">0</b></div>
+      </div>
+
+      <div class="card game-card">
+        <div class="game-topline"><span id="playerLabel">Jogador</span><span id="roundLabel">Rodada 1</span></div>
+        <div id="hang" class="hang" aria-live="polite">🙂</div>
+        <div id="word" class="word" aria-label="Palavra secreta"></div>
+        <div id="hints" class="hints"></div>
+        <div class="guess-input-row"><input id="guessInput" maxlength="4" autocomplete="off" placeholder="Digite um caractere e pressione Enter" aria-label="Digite uma letra ou caractere"><button id="guessBtn">OK</button></div>
+        <div id="keys" class="keys" aria-label="Teclado virtual"></div>
+        <div class="game-help">Use o teclado físico ou o teclado virtual. Em idiomas com IME, você também pode usar o campo de entrada acima.</div>
+      </div>
+
+      <div class="card admin">
+        <div class="admin-head"><div><span class="eyebrow danger">TESTE</span><strong>🔐 Painel Admin</strong></div><button class="secondary" id="toggleAdmin">Abrir / fechar</button></div>
+        <div id="adminBody" class="hidden admin-body">
+          <div class="form-grid two"><label>Senha<input id="adminPass" type="password" maxlength="32" autocomplete="off" placeholder="Digite a senha"></label><button id="unlock">Desbloquear</button></div>
+          <div id="adminControls" class="hidden actions">
+            <button data-add="10">+10s</button><button data-add="20">+20s</button><button data-add="30">+30s</button>
+            <button id="reveal">Revelar palavra</button><button id="removeError">Remover 1 erro</button><button id="nextHint">Liberar próxima dica</button>
+            <button id="addScore">+100 pontos</button><button id="resetRound">Reiniciar rodada</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="result" class="screen card result hidden">
+      <div id="resultIcon" class="result-icon">🏆</div>
+      <span class="eyebrow" id="resultKicker">RESULTADO</span>
+      <h2 id="resultTitle">Fim de jogo</h2>
+      <p id="resultText"></p>
+      <div id="resultSecret" class="secret-result"></div>
+      <div class="actions center"><button id="again">🔄 Jogar novamente</button><button class="secondary" id="exit">🚪 Sair</button></div>
+    </section>
+
+    <footer class="footer muted">Projeto modular • dados em <code>data/words.json</code> • API Flask opcional para execução local</footer>
+  </main>
+  <script src="static/script.js" defer></script>
+</body>
+</html>
