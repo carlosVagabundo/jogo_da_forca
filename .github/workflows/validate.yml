@@ -1,0 +1,29 @@
+name: Validate project
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Validate Python
+        run: python -m py_compile app.py
+
+      - name: Validate JSON
+        run: python -c "import json; json.load(open('data/words.json', encoding='utf-8')); print('words.json OK')"
+
+      - name: Validate JavaScript syntax
+        run: node --check static/script.js
