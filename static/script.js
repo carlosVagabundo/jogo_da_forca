@@ -159,7 +159,7 @@ async function randomWord(){
  if(!db.length)return null;
 
  const level=difficultyLimit();
- const sameTheme=db.filter(function(item){return String(item.theme||"").casefold?.() ? String(item.theme||"").casefold()===String(state.theme).casefold() : normalize(item.theme)===normalize(state.theme);});
+ const sameTheme=db.filter(function(item){return normalize(item.theme)===normalize(state.theme);});
  if(!sameTheme.length)return null;
 
  let pool=sameTheme.filter(function(item){return Number(item.difficulty||3)<=level+1;});
