@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Jogo da Forca Ultimate com Python, HTML, CSS e JavaScript">
+  <meta name="description" content="Jogo da Forca Ultimate">
   <title>Jogo da Forca Ultimate</title>
-  <link rel="stylesheet" href="static/style.css">
+  <link rel="stylesheet" href="static/style.css?v=20260922">
 </head>
 <body>
   <main class="app-shell">
@@ -13,7 +13,7 @@
       <div>
         <span class="eyebrow">PROJETO WEB</span>
         <h1>⌛ Jogo da Forca <span>Ultimate</span></h1>
-        <p class="muted">Versão modular • Python + HTML + CSS + JavaScript</p>
+        <p class="muted">HTML + CSS + JavaScript • Python/Flask opcional</p>
       </div>
       <div class="status-pill"><span class="status-dot"></span><strong id="status">Menu</strong></div>
     </header>
@@ -30,17 +30,20 @@
         </button>
         <button class="mode-card" data-mode="random">
           <span class="mode-icon">🎲</span><strong>Aleatório</strong>
-          <span>Receba palavras contextualizadas de acordo com tema, idioma e dificuldade.</span>
+          <span>Palavras organizadas por tema e dificuldade.</span>
         </button>
         <button class="mode-card" data-mode="endless">
           <span class="mode-icon">♾️</span><strong>Aleatório crescente</strong>
-          <span>Jogue uma sequência sem fim: a dificuldade aumenta conforme sua sequência.</span>
+          <span>Sequência sem fim com dificuldade progressiva e timer reiniciado.</span>
         </button>
       </div>
     </section>
 
     <section id="config" class="screen card hidden">
-      <div class="section-heading"><div><span class="eyebrow">CONFIGURAÇÃO</span><h2 id="configTitle">Prepare sua partida</h2></div><span class="mini-badge" id="modeBadge">Aleatório</span></div>
+      <div class="section-heading">
+        <div><span class="eyebrow">CONFIGURAÇÃO</span><h2 id="configTitle">Prepare sua partida</h2></div>
+        <span class="mini-badge" id="modeBadge">Aleatório</span>
+      </div>
 
       <div class="form-grid four">
         <label>Tempo<select id="time"></select></label>
@@ -52,28 +55,48 @@
       <div id="friendHints" class="hidden">
         <h3>Suas dicas</h3>
         <div class="form-grid three">
-          <label>Dica 1<input id="friendHint1" maxlength="160" placeholder="Dica mais fácil"></label>
-          <label>Dica 2<input id="friendHint2" maxlength="160" placeholder="Dica intermediária"></label>
-          <label>Dica 3<input id="friendHint3" maxlength="160" placeholder="Dica mais específica"></label>
+          <label>Dica 1<input id="friendHint1" maxlength="160" placeholder="Dica contextual"></label>
+          <label>Dica 2<input id="friendHint2" maxlength="160" placeholder="Dica mais específica"></label>
+          <label>Dica 3<input id="friendHint3" maxlength="160" placeholder="Dica final"></label>
         </div>
       </div>
 
-      <h3>Tema</h3><div id="themes" class="option-grid"></div>
-      <h3>Dificuldade</h3><div id="diffs" class="option-grid"></div>
+      <h3>Tema</h3>
+      <div class="dropdown" id="themeDropdown">
+        <button type="button" class="dropdown-trigger" id="themeSelectButton" aria-haspopup="listbox" aria-expanded="false">
+          <span id="themeSelected">🎌 Anime</span><span class="dropdown-chevron">▾</span>
+        </button>
+        <div class="dropdown-menu hidden" id="themeMenu" role="listbox"></div>
+      </div>
+
+      <h3>Dificuldade</h3>
+      <div class="dropdown" id="difficultyDropdown">
+        <button type="button" class="dropdown-trigger" id="difficultySelectButton" aria-haspopup="listbox" aria-expanded="false">
+          <span id="difficultySelected">3. Médio</span><span class="dropdown-chevron">▾</span>
+        </button>
+        <div class="dropdown-menu hidden" id="difficultyMenu" role="listbox"></div>
+      </div>
 
       <div class="translator">
-        <div class="section-heading compact"><div><span class="eyebrow">FERRAMENTA</span><h3>Tradutor</h3></div></div>
-        <div class="form-grid four">
+        <div class="section-heading compact">
+          <div><span class="eyebrow">FERRAMENTA</span><h3>Tradutor</h3></div>
+        </div>
+        <div class="translator-grid">
           <label>Origem<select id="from"></select></label>
           <label>Destino<select id="to"></select></label>
           <label>Texto<input id="trText" maxlength="300" placeholder="Digite uma palavra ou frase curta"></label>
           <label>Resultado<input id="trResult" readonly placeholder="Resultado"></label>
         </div>
-        <button id="translate">🌐 Traduzir</button>
-        <small id="translateStatus" class="muted"></small>
+        <div class="translator-actions">
+          <button id="translate">🌐 Traduzir</button>
+          <small id="translateStatus" class="muted"></small>
+        </div>
       </div>
 
-      <div class="actions"><button id="start">▶ Começar partida</button><button class="secondary" id="back">Voltar ao menu</button></div>
+      <div class="actions">
+        <button id="start">▶ Começar partida</button>
+        <button class="secondary" id="back">Voltar ao menu</button>
+      </div>
     </section>
 
     <section id="game" class="screen hidden">
@@ -89,9 +112,9 @@
         <div id="hang" class="hang" aria-live="polite">🙂</div>
         <div id="word" class="word" aria-label="Palavra secreta"></div>
         <div id="hints" class="hints"></div>
-        <div class="guess-input-row"><input id="guessInput" maxlength="4" autocomplete="off" placeholder="Digite um caractere e pressione Enter" aria-label="Digite uma letra ou caractere"><button id="guessBtn">OK</button></div>
+        <div class="keys-title">Escolha uma letra</div>
         <div id="keys" class="keys" aria-label="Teclado virtual"></div>
-        <div class="game-help">Use o teclado físico ou o teclado virtual. Em idiomas com IME, você também pode usar o campo de entrada acima.</div>
+        <div class="game-help">Clique em uma letra ou use diretamente o teclado físico. Cada letra será marcada como certa ou errada.</div>
       </div>
 
       <div class="card admin">
@@ -116,8 +139,8 @@
       <div class="actions center"><button id="again">🔄 Jogar novamente</button><button class="secondary" id="exit">🚪 Sair</button></div>
     </section>
 
-    <footer class="footer muted">Projeto modular • dados em <code>data/words.json</code> • API Flask opcional para execução local</footer>
+    <footer class="footer muted">Banco de palavras: <code>data/words.json</code> • GitHub Pages funciona sem Flask • Flask ativa API e Admin.</footer>
   </main>
-  <script src="static/script.js" defer></script>
+  <script src="static/script.js?v=20260922" defer></script>
 </body>
 </html>
