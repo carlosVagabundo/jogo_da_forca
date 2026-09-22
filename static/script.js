@@ -127,8 +127,20 @@ function renderOptions(){
 
 async function loadDatabase(){
  if(state.database.length)return state.database;
+
+ const embedded=window.FORCA_WORDS;
+ if(Array.isArray(embedded)){
+  state.database=embedded;
+ }else if(embedded&&embedded.themes&&typeof embedded.themes==="object"){
+  state.database=Object.entries(embedded.themes).flatMap(function(pair){
+   const theme=pair[0],items=pair[1];
+   return Array.isArray(items)?items.map(function(item){return Object.assign({},item,{theme:theme});}):[];
+  });
+ }
+ if(state.database.length)return state.database;
+
  try{
-  const response=await fetch(new URL("data/words.json",document.baseURI),{cache:"no-store"});
+  const response=await fetch(new URL("data/words.json?v=20260922.8",document.baseURI),{cache:"no-store"});
   if(!response.ok)throw new Error("Banco indisponível");
   const raw=await response.json();
   if(Array.isArray(raw))state.database=raw;
@@ -138,7 +150,9 @@ async function loadDatabase(){
     return Array.isArray(items)?items.map(function(item){return Object.assign({},item,{theme:theme});}):[];
    });
   }
- }catch(_){state.database=[];}
+ }catch(_){
+  state.database=[];
+ }
  return state.database;
 }
 
