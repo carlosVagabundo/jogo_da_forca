@@ -143,11 +143,20 @@ async function loadDatabase(){
 }
 
 function difficultyLimit(){
- return Math.min(6,state.difficulty+(state.mode==="endless"?Math.floor(state.streak/2):0));
+ return Math.min(6,state.difficulty+(state.mode==="endless"?Math.floor((state.round-1)/2):0));
 }
-function wordId(item){return normalize(item.word).replace(/\s+/g," ");}
+function wordId(item){return normalize(item.sourceWord||item.word).replace(/\s+/g," ");}
 function poolWordId(item){
- return normalize(item.theme||state.theme)+"::"+String(item.language||"pt").toLowerCase()+"::"+wordId(item);
+ return normalize(item.theme||state.theme)+"::"+String(item.sourceLanguage||item.language||"pt").toLowerCase()+"::"+wordId(item);
+}
+function localizeWordItem(item){
+ const requested=String(state.language||"pt").toLowerCase();
+ const baseLanguage=String(item.language||"pt").toLowerCase();
+ if(requested===baseLanguage)return {...item,sourceWord:item.sourceWord||item.word,sourceLanguage:item.sourceLanguage||baseLanguage,languageFallback:false};
+ const translations=item&&item.translations&&typeof item.translations==="object"?item.translations:{};
+ const translated=translations[requested];
+ if(typeof translated==="string"&&translated.trim())return {...item,word:translated.trim(),language:requested,sourceWord:item.word,sourceLanguage:baseLanguage,languageFallback:false};
+ return {...item,sourceWord:item.word,sourceLanguage:baseLanguage,languageFallback:requested!==baseLanguage};
 }
 
 async function randomWord(){
@@ -158,23 +167,30 @@ async function randomWord(){
  const sameTheme=db.filter(function(item){return normalize(item.theme)===normalize(state.theme);});
  if(!sameTheme.length)return null;
 
- let pool=sameTheme.filter(function(item){return Number(item.difficulty||3)<=level+1;});
+ const targetDifficulty=level+1;
+ let pool;
+ if(state.mode==="endless"){
+  pool=sameTheme.filter(function(item){return Number(item.difficulty||3)===targetDifficulty;});
+  if(!pool.length)pool=sameTheme.filter(function(item){return Number(item.difficulty||3)<=targetDifficulty;});
+ }else{
+  pool=sameTheme.filter(function(item){return Number(item.difficulty||3)<=targetDifficulty;});
+ }
  if(!pool.length)pool=sameTheme.slice();
 
- const localized=pool.filter(function(item){
-  return String(item.language||"pt").toLowerCase()===String(state.language||"pt").toLowerCase();
+ const requested=String(state.language||"pt").toLowerCase();
+ const localizedPool=pool.filter(function(item){
+  const baseLanguage=String(item.language||"pt").toLowerCase();
+  return baseLanguage===requested||(baseLanguage==="pt"&&item.translations&&typeof item.translations[requested]==="string"&&item.translations[requested].trim());
  });
 
  state.languageFallback=false;
- if(localized.length){
-  pool=localized;
+ if(localizedPool.length){
+  pool=localizedPool;
  }else{
-  const defaultLanguagePool=pool.filter(function(item){
-   return String(item.language||"pt").toLowerCase()==="pt";
-  });
+  const defaultLanguagePool=pool.filter(function(item){return String(item.language||"pt").toLowerCase()==="pt";});
   if(!defaultLanguagePool.length)return null;
   pool=defaultLanguagePool;
-  state.languageFallback=state.language!=="pt";
+  state.languageFallback=requested!=="pt";
  }
 
  let fresh=pool.filter(function(item){return !state.usedWords.has(poolWordId(item));});
@@ -183,11 +199,12 @@ async function randomWord(){
   fresh=pool.slice();
  }
 
- const item=fresh[Math.floor(Math.random()*fresh.length)]||null;
- if(item){
-  state.usedWords.add(poolWordId(item));
-  state.playLanguage=String(item.language||"pt").toLowerCase();
- }
+ const baseItem=fresh[Math.floor(Math.random()*fresh.length)]||null;
+ if(!baseItem)return null;
+ const item=localizeWordItem(baseItem);
+ state.usedWords.add(poolWordId(baseItem));
+ state.languageFallback=Boolean(item.languageFallback);
+ state.playLanguage=String(item.language||"pt").toLowerCase();
  return item;
 }
 
@@ -350,7 +367,9 @@ function exitGame(){
 }
 function restartCurrentWord(){
  if(!state.word)return;
- clearInterval(state.timer);state.finished=false;state.errors=0;state.correct=0;state.hintCount=0;state.guessed.clear();
+ if(!confirm("Reiniciar a partida? A pontuação e a sequência atuais serão zeradas."))return;
+ clearInterval(state.timer);
+ state.finished=false;state.errors=0;state.correct=0;state.score=0;state.streak=0;state.round=1;state.hintCount=0;state.guessed.clear();
  renderGame();runTimer();
 }
 
