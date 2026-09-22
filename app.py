@@ -134,17 +134,6 @@ TRANSLATIONS = {
     "ko": {"hello": "안녕하세요", "world": "세계", "friend": "친구", "game": "게임", "house": "집", "cat": "고양이", "dog": "개"},
     "zh": {"hello": "你好", "world": "世界", "friend": "朋友", "game": "游戏", "house": "家", "cat": "猫", "dog": "狗"},
     "ru": {"hello": "привет", "world": "мир", "friend": "друг", "game": "игра", "house": "дом", "cat": "кот", "dog": "собака"},
-    "uk": {"hello": "привіт", "world": "світ", "friend": "друг", "game": "гра", "house": "дім", "cat": "кіт", "dog": "собака"},
-    "el": {"hello": "γεια", "world": "κόσμος", "friend": "φίλος", "game": "παιχνίδι", "house": "σπίτι", "cat": "γάτα", "dog": "σκύλος"},
-    "nl": {"hello": "hallo", "world": "wereld", "friend": "vriend", "game": "spel", "house": "huis", "cat": "kat", "dog": "hond"},
-    "pl": {"hello": "cześć", "world": "świat", "friend": "przyjaciel", "game": "gra", "house": "dom", "cat": "kot", "dog": "pies"},
-    "tr": {"hello": "merhaba", "world": "dünya", "friend": "arkadaş", "game": "oyun", "house": "ev", "cat": "kedi", "dog": "köpek"},
-    "ar": {"hello": "مرحبا", "world": "العالم", "friend": "صديق", "game": "لعبة", "house": "بيت", "cat": "قط", "dog": "كلب"},
-    "hi": {"hello": "नमस्ते", "world": "दुनिया", "friend": "दोस्त", "game": "खेल", "house": "घर", "cat": "बिल्ली", "dog": "कुत्ता"},
-    "he": {"hello": "שלום", "world": "עולם", "friend": "חבר", "game": "משחק", "house": "בית", "cat": "חתול", "dog": "כלב"},
-    "sv": {"hello": "hej", "world": "värld", "friend": "vän", "game": "spel", "house": "hus", "cat": "katt", "dog": "hund"},
-    "no": {"hello": "hei", "world": "verden", "friend": "venn", "game": "spill", "house": "hus", "cat": "katt", "dog": "hund"},
-    "da": {"hello": "hej", "world": "verden", "friend": "ven", "game": "spil", "house": "hus", "cat": "kat", "dog": "hund"},
 }
 
 
@@ -159,17 +148,6 @@ COMMON_TRANSLATIONS = {
     "ko": {"goodbye": "안녕히 가세요", "please": "부탁합니다", "thanks": "감사합니다", "yes": "네", "no": "아니요", "water": "물", "food": "음식", "school": "학교", "student": "학생", "teacher": "선생님", "book": "책", "computer": "컴퓨터", "help": "도움", "word": "단어", "letter": "글자"},
     "zh": {"goodbye": "再见", "please": "请", "thanks": "谢谢", "yes": "是", "no": "不", "water": "水", "food": "食物", "school": "学校", "student": "学生", "teacher": "老师", "book": "书", "computer": "电脑", "help": "帮助", "word": "单词", "letter": "字母"},
     "ru": {"goodbye": "до свидания", "please": "пожалуйста", "thanks": "спасибо", "yes": "да", "no": "нет", "water": "вода", "food": "еда", "school": "школа", "student": "ученик", "teacher": "учитель", "book": "книга", "computer": "компьютер", "help": "помощь", "word": "слово", "letter": "буква"},
-    "uk": {"goodbye": "до побачення", "please": "будь ласка", "thanks": "дякую", "yes": "так", "no": "ні", "water": "вода", "food": "їжа", "school": "школа", "student": "учень", "teacher": "вчитель", "book": "книга", "computer": "комп'ютер", "help": "допомога", "word": "слово", "letter": "літера"},
-    "el": {"goodbye": "αντίο", "please": "παρακαλώ", "thanks": "ευχαριστώ", "yes": "ναι", "no": "όχι", "water": "νερό", "food": "φαγητό", "school": "σχολείο", "student": "μαθητής", "teacher": "δάσκαλος", "book": "βιβλίο", "computer": "υπολογιστής", "help": "βοήθεια", "word": "λέξη", "letter": "γράμμα"},
-    "nl": {"goodbye": "tot ziens", "please": "alsjeblieft", "thanks": "dank je", "yes": "ja", "no": "nee", "water": "water", "food": "eten", "school": "school", "student": "student", "teacher": "leraar", "book": "boek", "computer": "computer", "help": "hulp", "word": "woord", "letter": "letter"},
-    "pl": {"goodbye": "do widzenia", "please": "proszę", "thanks": "dziękuję", "yes": "tak", "no": "nie", "water": "woda", "food": "jedzenie", "school": "szkoła", "student": "uczeń", "teacher": "nauczyciel", "book": "książka", "computer": "komputer", "help": "pomoc", "word": "słowo", "letter": "litera"},
-    "tr": {"goodbye": "hoşça kal", "please": "lütfen", "thanks": "teşekkürler", "yes": "evet", "no": "hayır", "water": "su", "food": "yemek", "school": "okul", "student": "öğrenci", "teacher": "öğretmen", "book": "kitap", "computer": "bilgisayar", "help": "yardım", "word": "kelime", "letter": "harf"},
-    "ar": {"goodbye": "مع السلامة", "please": "من فضلك", "thanks": "شكرًا", "yes": "نعم", "no": "لا", "water": "ماء", "food": "طعام", "school": "مدرسة", "student": "طالب", "teacher": "معلم", "book": "كتاب", "computer": "حاسوب", "help": "مساعدة", "word": "كلمة", "letter": "حرف"},
-    "hi": {"goodbye": "अलविदा", "please": "कृपया", "thanks": "धन्यवाद", "yes": "हाँ", "no": "नहीं", "water": "पानी", "food": "खाना", "school": "स्कूल", "student": "छात्र", "teacher": "शिक्षक", "book": "किताब", "computer": "कंप्यूटर", "help": "मदद", "word": "शब्द", "letter": "अक्षर"},
-    "he": {"goodbye": "להתראות", "please": "בבקשה", "thanks": "תודה", "yes": "כן", "no": "לא", "water": "מים", "food": "אוכל", "school": "בית ספר", "student": "תלמיד", "teacher": "מורה", "book": "ספר", "computer": "מחשב", "help": "עזרה", "word": "מילה", "letter": "אות"},
-    "sv": {"goodbye": "hej då", "please": "snälla", "thanks": "tack", "yes": "ja", "no": "nej", "water": "vatten", "food": "mat", "school": "skola", "student": "student", "teacher": "lärare", "book": "bok", "computer": "dator", "help": "hjälp", "word": "ord", "letter": "bokstav"},
-    "no": {"goodbye": "ha det", "please": "vær så snill", "thanks": "takk", "yes": "ja", "no": "nei", "water": "vann", "food": "mat", "school": "skole", "student": "student", "teacher": "lærer", "book": "bok", "computer": "datamaskin", "help": "hjelp", "word": "ord", "letter": "bokstav"},
-    "da": {"goodbye": "farvel", "please": "venligst", "thanks": "tak", "yes": "ja", "no": "nej", "water": "vand", "food": "mad", "school": "skole", "student": "elev", "teacher": "lærer", "book": "bog", "computer": "computer", "help": "hjælp", "word": "ord", "letter": "bogstav"},
 }
 
 def translation_table(language: str) -> dict:
