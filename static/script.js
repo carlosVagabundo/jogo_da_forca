@@ -30,7 +30,6 @@ const state = {
   mode:"random",theme:"Anime",difficulty:2,language:"pt",word:"",hints:[],hintCount:0,
   errors:0,score:0,streak:0,round:1,correct:0,timeLeft:Infinity,timer:null,guessed:new Set(),
   database:[],unlocked:false,finished:false,
-  staticSite:location.hostname.endsWith(".github.io") || location.hostname==="github.io"
 };
 
 function escapeHTML(value){return String(value).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];});}
@@ -198,7 +197,7 @@ function renderGame(){
 
   $("word").innerHTML=chars(state.word).map(function(char){
     if(!guessable(char))return "<span>"+escapeHTML(char)+"</span>";
-    return "<span class="letter-slot">"+(state.guessed.has(keyOf(char))?escapeHTML(char):"_")+"</span>";
+    return '<span class="letter-slot">' +(state.guessed.has(keyOf(char))?escapeHTML(char):"_")+ "</span>";
   }).join("");
 
   const keyboard=KEYBOARDS[state.language]||KEYBOARDS.en;
@@ -279,18 +278,16 @@ async function translate(){
   if(source===target){$("trResult").value=text;$("translateStatus").textContent="Os idiomas são iguais.";return;}
   $("translateStatus").textContent="Traduzindo...";
 
-  if(!state.staticSite){
-    try{
-      const response=await fetch("api/translate",{
-        method:"POST",headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({text:text,source:source,target:target})
-      });
-      if(response.ok){
-        const result=await response.json();
-        $("trResult").value=result.text||text;$("translateStatus").textContent="Usando o backend Python.";return;
-      }
-    }catch(_){}
-  }
+  try{
+    const response=await fetch("api/translate",{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({text:text,source:source,target:target})
+    });
+    if(response.ok){
+      const result=await response.json();
+      $("trResult").value=result.text||text;$("translateStatus").textContent="Usando o backend Python.";return;
+    }
+  }catch(_){}
 
   $("trResult").value=localTranslate(text,source,target);
   $("translateStatus").textContent="Modo local: dicionário básico.";
@@ -334,11 +331,6 @@ function toggleAdmin(){
 async function unlockAdmin(){
   const password=$("adminPass").value.trim();
   if(!password)return;
-  if(state.staticSite){
-    $("adminControls").classList.add("hidden");
-    alert("O painel Admin protegido pelo backend funciona apenas com o app.py. O jogo normal continua funcionando no GitHub Pages.");
-    return;
-  }
   try{
     const response=await fetch("api/admin/check",{
       method:"POST",headers:{"Content-Type":"application/json"},
