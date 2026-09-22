@@ -30,6 +30,9 @@ def load_grouped_words() -> dict:
     return {}
 
 
+SUPPORTED_LANGUAGES = {"pt", "en", "es", "fr", "de", "it", "ja", "ko", "zh", "ru"}
+
+
 def all_words() -> list[dict]:
     grouped = load_grouped_words()
     result = []
@@ -41,6 +44,27 @@ def all_words() -> list[dict]:
             result.append(entry)
 
     return result
+
+
+def localized_entry(item: dict, language: str) -> dict | None:
+    requested = str(language or "pt").casefold()
+    base_language = str(item.get("language", "pt")).casefold()
+    entry = dict(item)
+
+    if requested == base_language:
+        return entry
+
+    translations = item.get("translations")
+    if base_language == "pt" and isinstance(translations, dict):
+        translated = translations.get(requested)
+        if isinstance(translated, str) and translated.strip():
+            entry["word"] = translated.strip()
+            entry["language"] = requested
+            entry["source_word"] = item.get("word", "")
+            entry["source_language"] = base_language
+            return entry
+
+    return None
 
 
 @app.get("/")
@@ -79,11 +103,21 @@ def random_word():
             }), 404
 
     if language:
-        items = [item for item in items if str(item.get("language", "pt")).casefold() == language]
+        if language not in SUPPORTED_LANGUAGES:
+            return jsonify({
+                "error": "unsupported_language",
+                "message": "Idioma não suportado pelo jogo.",
+            }), 400
+        localized_items = []
+        for item in items:
+            localized = localized_entry(item, language)
+            if localized is not None:
+                localized_items.append(localized)
+        items = localized_items
         if not items:
             return jsonify({
                 "error": "language_not_found",
-                "message": "Nenhuma palavra encontrada para o idioma informado.",
+                "message": "Nenhuma palavra traduzida encontrada para o idioma informado.",
             }), 404
 
     if difficulty_raw:
@@ -203,7 +237,7 @@ def translate():
     if not text or source == target:
         return jsonify({"text": text, "source": source, "target": target})
 
-    if source not in TRANSLATIONS or target not in TRANSLATIONS:
+    if source not in SUPPORTED_LANGUAGES or target not in SUPPORTED_LANGUAGES:
         return jsonify({
             "text": text,
             "source": source,
