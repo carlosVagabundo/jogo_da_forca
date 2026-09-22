@@ -43,7 +43,7 @@ jobs:
           all_words = []
           for theme, items in themes.items():
               assert isinstance(theme, str) and theme.strip(), "theme names must be non-empty"
-              assert isinstance(items, list) and items, f"theme '{theme}' is empty"
+              assert isinstance(items, list) and len(items) == 30, f"theme '{theme}' must contain exactly 30 words"
               normalized = []
               for item in items:
                   assert isinstance(item, dict), f"invalid entry in theme '{theme}'"
@@ -55,6 +55,11 @@ jobs:
                   assert language, f"missing language for '{word}'"
                   hints = item.get("hints")
                   assert isinstance(hints, list) and len(hints) == 3 and all(str(h).strip() for h in hints), f"'{word}' must have exactly 3 hints"
+                  translations = item.get("translations", {})
+                  assert isinstance(translations, dict), f"translations for '{word}' must be an object"
+                  supported = {"pt", "en", "es", "fr", "de", "it", "ja", "ko", "zh", "ru"}
+                  assert set(translations).issubset(supported - {"pt"}), f"unsupported translation code for '{word}'"
+                  assert all(isinstance(v, str) and v.strip() for v in translations.values()), f"empty translation for '{word}'"
                   key = re.sub(r"\s+", " ", word.casefold().strip())
                   normalized.append(key)
                   all_words.append((theme, key))
@@ -98,8 +103,19 @@ jobs:
           bad_theme = client.get("/api/word?theme=__NAO_EXISTE__")
           assert bad_theme.status_code == 404
 
-          bad_language = client.get("/api/word?theme=Anime&language=en")
-          assert bad_language.status_code == 404
+          localized = client.get("/api/word?theme=Animais&language=en")
+          assert localized.status_code == 200
+          assert localized.json["language"] == "en"
+          assert localized.json["word"] in {
+              "dog", "cat", "penguin", "giraffe", "dolphin", "octopus",
+              "platypus", "axolotl", "saiga", "lion", "tiger", "elephant",
+              "zebra", "wolf", "fox", "bear", "rabbit", "horse", "cow",
+              "pig", "chicken", "eagle", "owl", "shark", "whale",
+              "turtle", "crocodile", "chameleon", "monkey", "jaguar"
+          }
+
+          bad_language = client.get("/api/word?theme=Anime&language=xx")
+          assert bad_language.status_code == 400
 
           invalid_difficulty = client.get("/api/word?theme=Anime&difficulty=abc")
           assert invalid_difficulty.status_code == 400
