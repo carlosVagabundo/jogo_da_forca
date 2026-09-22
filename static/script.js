@@ -50,6 +50,30 @@ const TRANSLATIONS={
  da:{hello:"hej",world:"verden",friend:"ven",game:"spil",house:"hus",cat:"kat",dog:"hund"}
 };
 
+const COMMON_TRANSLATIONS={
+ pt:{goodbye:"tchau",please:"por favor",thanks:"obrigado",yes:"sim",no:"não",water:"água",food:"comida",school:"escola",student:"aluno",teacher:"professor",book:"livro",computer:"computador",help:"ajuda",word:"palavra",letter:"letra"},
+ en:{goodbye:"goodbye",please:"please",thanks:"thank you",yes:"yes",no:"no",water:"water",food:"food",school:"school",student:"student",teacher:"teacher",book:"book",computer:"computer",help:"help",word:"word",letter:"letter"},
+ es:{goodbye:"adiós",please:"por favor",thanks:"gracias",yes:"sí",no:"no",water:"agua",food:"comida",school:"escuela",student:"estudiante",teacher:"profesor",book:"libro",computer:"computadora",help:"ayuda",word:"palabra",letter:"letra"},
+ fr:{goodbye:"au revoir",please:"s'il vous plaît",thanks:"merci",yes:"oui",no:"non",water:"eau",food:"nourriture",school:"école",student:"étudiant",teacher:"professeur",book:"livre",computer:"ordinateur",help:"aide",word:"mot",letter:"lettre"},
+ de:{goodbye:"auf Wiedersehen",please:"bitte",thanks:"danke",yes:"ja",no:"nein",water:"Wasser",food:"Essen",school:"Schule",student:"Schüler",teacher:"Lehrer",book:"Buch",computer:"Computer",help:"Hilfe",word:"Wort",letter:"Buchstabe"},
+ it:{goodbye:"arrivederci",please:"per favore",thanks:"grazie",yes:"sì",no:"no",water:"acqua",food:"cibo",school:"scuola",student:"studente",teacher:"insegnante",book:"libro",computer:"computer",help:"aiuto",word:"parola",letter:"lettera"},
+ ja:{goodbye:"さようなら",please:"お願いします",thanks:"ありがとう",yes:"はい",no:"いいえ",water:"水",food:"食べ物",school:"学校",student:"学生",teacher:"先生",book:"本",computer:"コンピューター",help:"助け",word:"言葉",letter:"文字"},
+ ko:{goodbye:"안녕히 가세요",please:"부탁합니다",thanks:"감사합니다",yes:"네",no:"아니요",water:"물",food:"음식",school:"학교",student:"학생",teacher:"선생님",book:"책",computer:"컴퓨터",help:"도움",word:"단어",letter:"글자"},
+ zh:{goodbye:"再见",please:"请",thanks:"谢谢",yes:"是",no:"不",water:"水",food:"食物",school:"学校",student:"学生",teacher:"老师",book:"书",computer:"电脑",help:"帮助",word:"单词",letter:"字母"},
+ ru:{goodbye:"до свидания",please:"пожалуйста",thanks:"спасибо",yes:"да",no:"нет",water:"вода",food:"еда",school:"школа",student:"ученик",teacher:"учитель",book:"книга",computer:"компьютер",help:"помощь",word:"слово",letter:"буква"},
+ uk:{goodbye:"до побачення",please:"будь ласка",thanks:"дякую",yes:"так",no:"ні",water:"вода",food:"їжа",school:"школа",student:"учень",teacher:"вчитель",book:"книга",computer:"комп'ютер",help:"допомога",word:"слово",letter:"літера"},
+ el:{goodbye:"αντίο",please:"παρακαλώ",thanks:"ευχαριστώ",yes:"ναι",no:"όχι",water:"νερό",food:"φαγητό",school:"σχολείο",student:"μαθητής",teacher:"δάσκαλος",book:"βιβλίο",computer:"υπολογιστής",help:"βοήθεια",word:"λέξη",letter:"γράμμα"},
+ nl:{goodbye:"tot ziens",please:"alsjeblieft",thanks:"dank je",yes:"ja",no:"nee",water:"water",food:"eten",school:"school",student:"student",teacher:"leraar",book:"boek",computer:"computer",help:"hulp",word:"woord",letter:"letter"},
+ pl:{goodbye:"do widzenia",please:"proszę",thanks:"dziękuję",yes:"tak",no:"nie",water:"woda",food:"jedzenie",school:"szkoła",student:"uczeń",teacher:"nauczyciel",book:"książka",computer:"komputer",help:"pomoc",word:"słowo",letter:"litera"},
+ tr:{goodbye:"hoşça kal",please:"lütfen",thanks:"teşekkürler",yes:"evet",no:"hayır",water:"su",food:"yemek",school:"okul",student:"öğrenci",teacher:"öğretmen",book:"kitap",computer:"bilgisayar",help:"yardım",word:"kelime",letter:"harf"},
+ ar:{goodbye:"مع السلامة",please:"من فضلك",thanks:"شكرًا",yes:"نعم",no:"لا",water:"ماء",food:"طعام",school:"مدرسة",student:"طالب",teacher:"معلم",book:"كتاب",computer:"حاسوب",help:"مساعدة",word:"كلمة",letter:"حرف"},
+ hi:{goodbye:"अलविदा",please:"कृपया",thanks:"धन्यवाद",yes:"हाँ",no:"नहीं",water:"पानी",food:"खाना",school:"स्कूल",student:"छात्र",teacher:"शिक्षक",book:"किताब",computer:"कंप्यूटर",help:"मदद",word:"शब्द",letter:"अक्षर"},
+ he:{goodbye:"להתראות",please:"בבקשה",thanks:"תודה",yes:"כן",no:"לא",water:"מים",food:"אוכל",school:"בית ספר",student:"תלמיד",teacher:"מורה",book:"ספר",computer:"מחשב",help:"עזרה",word:"מילה",letter:"אות"},
+ sv:{goodbye:"hej då",please:"snälla",thanks:"tack",yes:"ja",no:"nej",water:"vatten",food:"mat",school:"skola",student:"student",teacher:"lärare",book:"bok",computer:"dator",help:"hjälp",word:"ord",letter:"bokstav"},
+ no:{goodbye:"ha det",please:"vær så snill",thanks:"takk",yes:"ja",no:"nei",water:"vann",food:"mat",school:"skole",student:"student",teacher:"lærer",book:"bok",computer:"datamaskin",help:"hjelp",word:"ord",letter:"bokstav"},
+ da:{goodbye:"farvel",please:"venligst",thanks:"tak",yes:"ja",no:"nej",water:"vand",food:"mad",school:"skole",student:"elev",teacher:"lærer",book:"bog",computer:"computer",help:"hjælp",word:"ord",letter:"bogstav"}
+};
+
 const state={
  mode:"random",theme:"Anime",difficulty:2,language:"pt",word:"",hints:[],hintCount:0,
  errors:0,score:0,streak:0,round:1,correct:0,timeLeft:Infinity,timer:null,
@@ -358,29 +382,73 @@ function restartCurrentWord(){
  renderGame();runTimer();
 }
 
+function translationTable(language){
+ return Object.assign({},TRANSLATIONS[language]||{},COMMON_TRANSLATIONS[language]||{});
+}
+
+function normalizeTranslationText(value){
+ return String(value||"").trim().toLocaleLowerCase();
+}
+
 function localTranslate(text,source,target){
- const sourceTable=TRANSLATIONS[source]||{},targetTable=TRANSLATIONS[target]||{};
- const normalized=text.toLocaleLowerCase();
- const concept=Object.keys(sourceTable).find(function(key){return sourceTable[key].toLocaleLowerCase()===normalized;});
- return concept&&targetTable[concept]?targetTable[concept]:text;
+ const sourceTable=translationTable(source),targetTable=translationTable(target);
+ const normalized=normalizeTranslationText(text);
+
+ const exactConcept=Object.keys(sourceTable).find(function(key){
+  return normalizeTranslationText(sourceTable[key])===normalized;
+ });
+ if(exactConcept&&targetTable[exactConcept])return {text:targetTable[exactConcept],translated:true};
+
+ const tokens=String(text).split(/([\p{L}\p{M}\p{N}]+|[^\p{L}\p{M}\p{N}]+)/u).filter(Boolean);
+ let translatedAny=false;
+ let failed=false;
+ const result=tokens.map(function(token){
+  if(!/[\p{L}\p{M}\p{N}]/u.test(token))return token;
+  const concept=Object.keys(sourceTable).find(function(key){
+   return normalizeTranslationText(sourceTable[key])===normalizeTranslationText(token);
+  });
+  if(concept&&targetTable[concept]){
+   translatedAny=true;
+   return targetTable[concept];
+  }
+  failed=true;
+  return token;
+ }).join("");
+
+ return {text:translatedAny&&!failed?result:text,translated:translatedAny&&!failed};
 }
 
 async function translate(){
  const text=$("trText").value.trim(),source=$("from").value,target=$("to").value;
  if(!text){$("trResult").value="";$("translateStatus").textContent="";return;}
- if(source===target){$("trResult").value=text;$("translateStatus").textContent="Os idiomas são iguais.";return;}
+ if(source===target){
+  $("trResult").value=text;
+  $("translateStatus").textContent="Os idiomas são iguais.";
+  return;
+ }
+
  $("translateStatus").textContent="Traduzindo...";
  try{
-  const response=await fetch("api/translate",{
-   method:"POST",headers:{"Content-Type":"application/json"},
+  const response=await fetch(new URL("api/translate",document.baseURI),{
+   method:"POST",
+   headers:{"Content-Type":"application/json"},
    body:JSON.stringify({text:text,source:source,target:target})
   });
   if(response.ok){
-   const data=await response.json();$("trResult").value=data.text||text;$("translateStatus").textContent="Tradução feita pelo backend.";return;
+   const data=await response.json();
+   if(data.text&&data.translated!==false){
+    $("trResult").value=data.text;
+    $("translateStatus").textContent="Tradução feita pelo backend Python.";
+    return;
+   }
   }
  }catch(_){}
- $("trResult").value=localTranslate(text,source,target);
- $("translateStatus").textContent="Modo local: dicionário básico.";
+
+ const local=localTranslate(text,source,target);
+ $("trResult").value=local.text;
+ $("translateStatus").textContent=local.translated
+  ?"Tradução local disponível no GitHub Pages."
+  :"Não há tradução cadastrada para esse texto.";
 }
 
 function toggleAdmin(){
