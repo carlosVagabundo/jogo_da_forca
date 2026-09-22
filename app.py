@@ -13,10 +13,33 @@ DATA_FILE = BASE_DIR / "data" / "words.json"
 app = Flask(__name__, static_folder="static", static_url_path="/static")
 
 
-def load_words() -> list[dict]:
+def load_grouped_words() -> dict:
     with DATA_FILE.open("r", encoding="utf-8") as file:
         data = json.load(file)
-    return data if isinstance(data, list) else []
+
+    if isinstance(data, dict) and isinstance(data.get("themes"), dict):
+        return data["themes"]
+
+    if isinstance(data, list):
+        grouped = {}
+        for item in data:
+            grouped.setdefault(item.get("theme", "Outros"), []).append(item)
+        return grouped
+
+    return {}
+
+
+def all_words() -> list[dict]:
+    grouped = load_grouped_words()
+    result = []
+
+    for theme, items in grouped.items():
+        for item in items:
+            entry = dict(item)
+            entry["theme"] = theme
+            result.append(entry)
+
+    return result
 
 
 @app.get("/")
@@ -36,35 +59,43 @@ def health():
 
 @app.get("/api/words")
 def words():
-    return jsonify(load_words())
+    return jsonify(load_grouped_words())
 
 
 @app.get("/api/word")
 def random_word():
-    items = load_words()
+    items = all_words()
     theme = request.args.get("theme", "").strip().casefold()
     language = request.args.get("language", "").strip().casefold()
     difficulty_raw = request.args.get("difficulty", "")
 
     if theme:
         items = [item for item in items if item.get("theme", "").casefold() == theme]
+
     if language:
-        items = [item for item in items if item.get("language", "pt").casefold() == language]
+        localized = [item for item in items if item.get("language", "pt").casefold() == language]
+        if localized:
+            items = localized
+
     if difficulty_raw.isdigit():
         level = max(0, min(6, int(difficulty_raw)))
-        items = [item for item in items if int(item.get("difficulty", 3)) <= level + 1]
+        items = [
+            item for item in items
+            if int(item.get("difficulty", 3)) <= level + 1
+        ]
 
-    return jsonify(random.choice(items or load_words()))
+    return jsonify(random.choice(items or all_words()))
 
 
-ADMIN_PASSWORD = os.environ.get("FORCA_ADMIN_PASSWORD", "admin")
+ADMIN_PASSWORD = os.environ.get("FORCA_ADMIN_PASSWORD", "")
 
 
 @app.post("/api/admin/check")
 def admin_check():
     payload = request.get_json(silent=True) or {}
     password = str(payload.get("password", ""))
-    return jsonify({"valid": password == ADMIN_PASSWORD})
+    valid = bool(ADMIN_PASSWORD) and password == ADMIN_PASSWORD
+    return jsonify({"valid": valid})
 
 
 TRANSLATIONS = {
@@ -105,11 +136,19 @@ def translate():
     source_table = TRANSLATIONS.get(source, {})
     target_table = TRANSLATIONS.get(target, {})
     normalized = text.casefold()
-    concept = next((key for key, value in source_table.items() if value.casefold() == normalized), None)
+    concept = next(
+        (key for key, value in source_table.items() if value.casefold() == normalized),
+        None,
+    )
     result = target_table.get(concept, text) if concept else text
+
     return jsonify({"text": result, "source": source, "target": target})
 
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "5000"))
-    app.run(host="0.0.0.0", port=port, debug=os.environ.get("FLASK_DEBUG", "0") == "1")
+    app.run(
+        host="0.0.0.0",
+        port=port,
+        debug=os.environ.get("FLASK_DEBUG", "0") == "1",
+    )
