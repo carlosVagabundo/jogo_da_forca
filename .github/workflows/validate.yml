@@ -22,8 +22,11 @@ jobs:
       - name: Validate Python
         run: python -m py_compile app.py
 
-      - name: Validate JSON
-        run: python -c "import json; json.load(open('data/words.json', encoding='utf-8')); print('words.json OK')"
+      - name: Validate grouped JSON
+        run: python -c "import json; d=json.load(open('data/words.json', encoding='utf-8')); assert isinstance(d, dict) and isinstance(d.get('themes'), dict); assert len(d['themes']) == 18; assert all(isinstance(v, list) and v for v in d['themes'].values()); assert all(len(x.get('hints', [])) == 3 for v in d['themes'].values() for x in v); print('words.json OK')"
 
       - name: Validate JavaScript syntax
         run: node --check static/script.js
+
+      - name: Validate static entrypoint
+        run: python -c "from pathlib import Path; html=Path('index.html').read_text(encoding='utf-8'); assert 'static/style.css' in html and 'static/script.js' in html and 'data/words.json' in open('static/script.js', encoding='utf-8').read(); print('static entrypoint OK')"
