@@ -427,4 +427,3 @@ loadSettings();
 $("lang").value=state.language;
 renderOptions();
 database();
-if(state.staticSite)$("status").title="Versão estática em execução no GitHub Pages";
