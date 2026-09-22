@@ -104,5 +104,15 @@ jobs:
           admin = client.post("/api/admin/check", json={"password": "test-password"})
           assert admin.status_code == 200 and admin.json["valid"] is True
 
+          translated = client.post("/api/translate", json={"text": "olá amigo", "source": "pt", "target": "en"})
+          assert translated.status_code == 200
+          assert translated.json["translated"] is True
+          assert translated.json["text"].lower() == "hello friend"
+
+          unknown = client.post("/api/translate", json={"text": "texto não cadastrado", "source": "pt", "target": "en"})
+          assert unknown.status_code == 200
+          assert unknown.json["translated"] is False
+          assert unknown.json["text"] == "texto não cadastrado"
+
           print("Flask API smoke tests OK")
           PY
