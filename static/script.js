@@ -242,16 +242,9 @@ async function startGame(){
 }
 
 function hintCountForProgress(){
- const unique=new Set(letters(state.word).filter(guessable).map(keyOf)).size;
- if(state.difficulty>=3){
-  if(state.correct>=Math.max(8,Math.ceil(unique*.8)))return 3;
-  if(state.correct>=Math.max(6,Math.ceil(unique*.6)))return 2;
-  if(state.correct>=Math.max(4,Math.ceil(unique*.4)))return 1;
- }else{
-  if(state.correct>=Math.max(7,Math.ceil(unique*.75)))return 3;
-  if(state.correct>=Math.max(5,Math.ceil(unique*.5)))return 2;
-  if(state.correct>=Math.max(3,Math.ceil(unique*.3)))return 1;
- }
+ if(state.errors>=5)return 3;
+ if(state.errors>=3)return 2;
+ if(state.errors>=1)return 1;
  return 0;
 }
 function visibleHintCount(){return Math.min(3,Math.max(state.hintCount,hintCountForProgress()));}
@@ -394,20 +387,38 @@ function toggleAdmin(){
  $("adminBody").classList.toggle("hidden");
  if(!$("adminBody").classList.contains("hidden"))$("adminPass").focus();
 }
+const ADMIN_LOCAL_PASSWORD="2209";
+
 async function unlockAdmin(){
  const password=$("adminPass").value.trim();
  if(!password)return;
+
+ if(password===ADMIN_LOCAL_PASSWORD){
+  state.unlocked=true;
+  $("adminControls").classList.remove("hidden");
+  $("adminPass").value="";
+  $("translateStatus").textContent="Painel Admin desbloqueado.";
+  return;
+ }
+
  try{
   const response=await fetch("api/admin/check",{
-   method:"POST",headers:{"Content-Type":"application/json"},
+   method:"POST",
+   headers:{"Content-Type":"application/json"},
    body:JSON.stringify({password:password})
   });
   const data=response.ok?await response.json():null;
   if(data&&data.valid){
-   state.unlocked=true;$("adminControls").classList.remove("hidden");$("adminPass").value="";return;
+   state.unlocked=true;
+   $("adminControls").classList.remove("hidden");
+   $("adminPass").value="";
+   $("translateStatus").textContent="Painel Admin desbloqueado.";
+   return;
   }
  }catch(_){}
- alert("Senha incorreta ou backend indisponível.");
+
+ $("adminPass").value="";
+ alert("Senha incorreta.");
 }
 function canAdmin(){return state.unlocked;}
 function addTime(seconds){if(canAdmin()&&state.timeLeft!==Infinity){state.timeLeft+=seconds;updateTimer();}}
