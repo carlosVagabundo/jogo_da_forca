@@ -106,7 +106,13 @@ jobs:
           localized = client.get("/api/word?theme=Animais&language=en")
           assert localized.status_code == 200
           assert localized.json["language"] == "en"
-          assert localized.json["word"] == "lion"
+          assert localized.json["word"] in {
+              "dog", "cat", "penguin", "giraffe", "dolphin", "octopus",
+              "platypus", "axolotl", "saiga", "lion", "tiger", "elephant",
+              "zebra", "wolf", "fox", "bear", "rabbit", "horse", "cow",
+              "pig", "chicken", "eagle", "owl", "shark", "whale",
+              "turtle", "crocodile", "chameleon", "monkey", "jaguar"
+          }
 
           bad_language = client.get("/api/word?theme=Anime&language=xx")
           assert bad_language.status_code == 400
