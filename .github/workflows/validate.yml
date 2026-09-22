@@ -65,6 +65,9 @@ jobs:
           html = Path("index.html").read_text(encoding="utf-8")
           listed_themes = re.findall(r'\["[^"]*","([^"]+)"\]', frontend.split("const THEMES=", 1)[1].split("];", 1)[0])
           assert set(listed_themes) == set(themes), "frontend themes and words.json themes are out of sync"
+
+          language_codes = re.findall(r'\["([a-z]{2})","[^"]+"\]', frontend.split("const LANGUAGES=", 1)[1].split("];", 1)[0])
+          assert language_codes == ["pt", "en", "es", "fr", "de", "it", "ja", "ko", "zh", "ru"], "language list must contain exactly the 10 supported languages"
           assert "static/style.css" in html and "static/script.js" in html, "static entrypoint references are missing"
           assert "data/words.json" in frontend, "frontend must load the word database"
 
