@@ -1,123 +1,156 @@
 # 🎯 Jogo da Forca Ultimate
 
-Jogo da forca web modular, responsivo e preparado para execução como página estática ou como aplicação Flask.
+Jogo da forca modular, responsivo e preparado para dois cenários:
 
-## Stack
+1. GitHub Pages: executa a versão estática com HTML + CSS + JavaScript + JSON.
+2. Flask/Python: executa a aplicação local com API, tradução e validação do painel Admin.
 
-- **HTML5**: estrutura da interface.
-- **CSS3**: layout responsivo, componentes e visual.
-- **JavaScript**: lógica do jogo, teclado, timer, pontuação, dicas, modos e tradução.
-- **Python + Flask**: API para palavras aleatórias, tradução, verificação de saúde e painel administrativo.
-- **JSON**: banco de palavras em `data/words.json`.
-
-> No navegador, a linguagem correta é **JavaScript**. Java é uma tecnologia diferente; por isso o projeto usa Python + HTML + CSS + JavaScript.
+> Para aplicações web, a tecnologia do navegador usada neste projeto é JavaScript. Java é outra tecnologia.
 
 ## Estrutura
 
-```text
-jogo_da_forca/
-├── app.py
-├── index.html
-├── requirements.txt
-├── README.md
-├── data/
-│   └── words.json
-└── static/
-    ├── style.css
-    └── script.js
-```
+    jogo_da_forca/
+    ├── .github/
+    │   └── workflows/
+    │       ├── deploy-pages.yml
+    │       └── validate.yml
+    ├── app.py
+    ├── index.html
+    ├── requirements.txt
+    ├── README.md
+    ├── .gitignore
+    ├── data/
+    │   └── words.json
+    └── static/
+        ├── script.js
+        └── style.css
+
+## Banco de palavras
+
+O arquivo data/words.json agora é organizado por seções de tema. Em JSON não existe div; o equivalente correto é um objeto com uma chave para cada tema.
+
+Exemplo:
+
+    {
+      "themes": {
+        "Anime": [],
+        "Séries": [],
+        "Filmes": [],
+        "Personagens": [],
+        "Jogos": [],
+        "Animais": []
+      }
+    }
+
+Cada tema possui várias palavras com dificuldade, idioma e três dicas. Para adicionar conteúdo, basta editar a lista do tema correspondente.
 
 ## Recursos
 
-- Jogar com amigos com palavra e até 3 dicas personalizadas.
-- Modo aleatório com filtros de tema, idioma e dificuldade.
-- Modo aleatório crescente com dificuldade progressiva e timer reiniciado a cada acerto.
-- 8 erros por partida e personagem visual progressivo.
-- Pontuação, sequência e rodada.
-- Dicas progressivas conforme letras corretas são descobertas.
-- Tempo de 30 segundos até 60 minutos e opção de tempo infinito.
-- 18 temas e 7 níveis de dificuldade.
-- 21 idiomas e teclado virtual adaptado ao idioma selecionado.
-- Entrada por teclado físico e campo auxiliar para idiomas com IME.
-- Tradutor integrado com suporte local e API Python.
-- Painel Admin recolhível para testes: adicionar tempo, revelar palavra, remover erro, liberar dica, adicionar pontos e reiniciar rodada.
-- Tela final com pontuação e palavra secreta quando a partida termina por erro ou tempo.
+- Jogar com amigos.
+- Palavra secreta personalizada.
+- Até 3 dicas personalizadas no modo com amigos.
+- Modo aleatório.
+- Modo aleatório crescente.
+- 8 erros por rodada.
+- Timer de 30 segundos a 60 minutos e tempo infinito.
+- 18 temas.
+- 7 níveis de dificuldade.
+- 21 idiomas.
+- Teclado virtual adaptado ao idioma.
+- Teclado físico sem interferir em campos de texto, senha ou seleção.
+- Dicas progressivas durante a partida.
+- Pontuação e sequência.
+- Tela final com pontuação e palavra secreta.
+- Configurações salvas no navegador.
+- Fallback local de palavras para continuar jogando sem API.
+- Painel Admin recolhível quando o Flask está ativo.
 
-## Executar localmente
+## Por que o GitHub Pages não estava funcionando?
 
-### 1. Criar ambiente virtual (opcional, recomendado)
+O GitHub Pages publica arquivos estáticos. Ele não executa o servidor Flask/Python do app.py. O projeto anterior tentava acessar endpoints de API que só existem quando o Flask está rodando.
 
-**Windows PowerShell:**
+Agora o frontend foi corrigido para:
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-```
+- carregar data/words.json diretamente no navegador;
+- usar caminhos relativos compatíveis com um repositório publicado em github.io/NOME-DO-REPOSITORIO/;
+- não depender do Flask para sortear palavras;
+- não depender do Flask para iniciar uma partida;
+- usar o tradutor local como fallback;
+- deixar o Admin protegido pelo backend disponível apenas na versão Flask.
 
-**Linux/macOS:**
+## Publicar no GitHub Pages
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
+O repositório agora contém .github/workflows/deploy-pages.yml. O workflow publica automaticamente o site estático a cada push na branch main, usando as ações oficiais de Pages.
 
-### 2. Instalar dependências
+No GitHub:
 
-```bash
-pip install -r requirements.txt
-```
+1. Abra Settings do repositório.
+2. Entre em Pages.
+3. Em Build and deployment > Source, selecione GitHub Actions.
+4. Vá em Actions e confirme que Deploy to GitHub Pages terminou com sucesso.
+5. Abra a URL informada pelo GitHub.
 
-### 3. Iniciar o Flask
+O index.html permanece na raiz porque o artefato publicado precisa conter o arquivo de entrada no nível superior.
 
-```bash
-python app.py
-```
+## Executar localmente com Python
 
-Abra `http://127.0.0.1:5000` no navegador.
+Windows PowerShell:
+
+    python -m venv .venv
+    .\.venv\Scripts\Activate.ps1
+    pip install -r requirements.txt
+    python app.py
+
+Linux/macOS:
+
+    python3 -m venv .venv
+    source .venv/bin/activate
+    pip install -r requirements.txt
+    python app.py
+
+Depois abra http://127.0.0.1:5000
+
+## Painel Admin
+
+O painel Admin usa o backend Flask para validar a senha.
+
+Configure a senha com variável de ambiente:
+
+    $env:FORCA_ADMIN_PASSWORD="sua-senha"
+    python app.py
+
+Por segurança, a senha não fica gravada no JavaScript do navegador.
+
+No GitHub Pages, o backend não está ativo, então as funções Admin protegidas pelo servidor ficam indisponíveis.
 
 ## API
 
-`GET /api/health` — verifica se a API está online.
+- GET /api/health
+- GET /api/words
+- GET /api/word?theme=Anime&language=pt&difficulty=3
+- POST /api/translate
+- POST /api/admin/check
 
-`GET /api/words` — retorna o banco de palavras.
+## Validação automática
 
-`GET /api/word?theme=Anime&language=pt&difficulty=3` — retorna uma palavra aleatória compatível com os filtros.
+O workflow validate.yml verifica:
 
-`POST /api/translate` — recebe JSON com `text`, `source` e `target`.
-
-`POST /api/admin/check` — valida a senha administrativa configurada no servidor.
-
-## Senha do painel Admin
-
-Por segurança, a senha **não fica fixa no JavaScript**. O backend lê a variável de ambiente `FORCA_ADMIN_PASSWORD`.
-
-Exemplo no PowerShell:
-
-```powershell
-$env:FORCA_ADMIN_PASSWORD="sua-senha"
-python app.py
-```
-
-Sem a variável, o projeto usa `admin` como valor padrão de desenvolvimento. Para um ambiente real, altere essa variável.
-
-## Execução sem Python
-
-O frontend continua funcionando como página estática porque possui fallback local para o banco de palavras e para o tradutor. Para esse modo, basta abrir `index.html` em um navegador ou publicar os arquivos estáticos em um serviço como GitHub Pages.
-
-A API Python é necessária para usar o backend Flask e os endpoints `/api/*`.
+- sintaxe do Python;
+- estrutura do words.json;
+- sintaxe do JavaScript;
+- referências básicas do frontend estático.
 
 ## Manutenção
 
-Para adicionar palavras, edite `data/words.json`. Cada item segue o formato:
+Para adicionar uma palavra, coloque este objeto dentro do tema desejado em data/words.json:
 
-```json
-{
-  "word": "Python",
-  "theme": "Tecnologia",
-  "difficulty": 1,
-  "language": "pt",
-  "hints": ["Dica 1", "Dica 2", "Dica 3"]
-}
-```
-
-Mantenha exatamente três dicas quando possível para preservar a progressão visual do jogo.
+    {
+      "word": "Exemplo",
+      "difficulty": 2,
+      "language": "pt",
+      "hints": [
+        "Dica mais fácil",
+        "Dica intermediária",
+        "Dica mais específica"
+      ]
+    }
