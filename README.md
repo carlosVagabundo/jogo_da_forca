@@ -55,16 +55,16 @@ Cada tema possui várias palavras com dificuldade, idioma e três dicas. Para ad
 - Timer de 30 segundos a 60 minutos e tempo infinito.
 - 18 temas.
 - 7 níveis de dificuldade, com conteúdo dos níveis 1 a 7 em todos os temas.
-- 21 opções de idioma/teclado.
-- Banco atual com 162 palavras; as palavras cadastradas atualmente estão em português.
-- Quando não houver uma palavra cadastrada no idioma escolhido, o jogo informa isso na rodada e usa português também no teclado para manter a partida jogável.
+- 10 opções de idioma/teclado.
+- Banco atual com 540 palavras (30 por tema), com traduções literais cadastradas quando disponíveis.
+- Quando houver tradução cadastrada, a palavra é exibida no idioma escolhido; quando não houver, o jogo usa português como fallback.
 - Teclado virtual adaptado ao idioma disponível.
 - Teclado físico sem interferir em campos de texto, senha ou seleção.
 - Dicas progressivas durante a partida.
 - Pontuação e sequência.
 - Tela final com pontuação e palavra secreta.
 - Configurações salvas no navegador.
-- Fallback local de palavras para continuar jogando sem API.
+- Banco embutido em `static/wordbank.js` para o jogo continuar funcionando mesmo sem a leitura do JSON/API.
 - Painel Admin recolhível quando o Flask está ativo.
 
 ## Por que o GitHub Pages não estava funcionando?
@@ -111,7 +111,7 @@ Linux/macOS:
     pip install -r requirements.txt
     python app.py
 
-Depois abra http://127.0.0.1:5000
+Depois abra http://127.0.0.1:5000. Também é possível abrir `index.html` por um servidor estático/Live Server; o banco embutido evita dependência do fetch do JSON para iniciar o jogo.
 
 ## Painel Admin
 
