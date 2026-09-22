@@ -111,7 +111,7 @@ def random_word():
     return jsonify(random.choice(items))
 
 
-ADMIN_PASSWORD = os.environ.get("FORCA_ADMIN_PASSWORD", "")
+ADMIN_PASSWORD = os.environ.get("FORCA_ADMIN_PASSWORD", "2209")
 
 
 @app.post("/api/admin/check")
