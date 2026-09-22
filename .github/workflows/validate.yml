@@ -75,6 +75,11 @@ jobs:
           assert language_codes == ["pt", "en", "es", "fr", "de", "it", "ja", "ko", "zh", "ru"], "language list must contain exactly the 10 supported languages"
           assert "static/style.css" in html and "static/script.js" in html, "static entrypoint references are missing"
           assert "data/words.json" in frontend, "frontend must load the word database"
+          assert "static/wordbank.js" in html, "embedded wordbank reference is missing"
+          embedded_text = Path("static/wordbank.js").read_text(encoding="utf-8").strip()
+          assert embedded_text.startswith("window.FORCA_WORDS=") and embedded_text.endswith(";"), "invalid embedded wordbank format"
+          embedded_data = json.loads(embedded_text[len("window.FORCA_WORDS="):-1])
+          assert embedded_data == data, "embedded wordbank and data/words.json are out of sync"
 
           print(f"words.json OK: {len(themes)} themes, {sum(len(v) for v in themes.values())} words")
           PY
