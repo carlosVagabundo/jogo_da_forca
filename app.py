@@ -67,24 +67,48 @@ def random_word():
     items = all_words()
     theme = request.args.get("theme", "").strip().casefold()
     language = request.args.get("language", "").strip().casefold()
-    difficulty_raw = request.args.get("difficulty", "")
+    difficulty_raw = request.args.get("difficulty", "").strip()
 
     if theme:
-        items = [item for item in items if item.get("theme", "").casefold() == theme]
+        items = [item for item in items if str(item.get("theme", "")).casefold() == theme]
+        if not items:
+            return jsonify({
+                "error": "theme_not_found",
+                "message": "Nenhuma palavra encontrada para o tema informado.",
+            }), 404
 
     if language:
-        localized = [item for item in items if item.get("language", "pt").casefold() == language]
-        if localized:
-            items = localized
+        items = [item for item in items if str(item.get("language", "pt")).casefold() == language]
+        if not items:
+            return jsonify({
+                "error": "language_not_found",
+                "message": "Nenhuma palavra encontrada para o idioma informado.",
+            }), 404
 
-    if difficulty_raw.isdigit():
+    if difficulty_raw:
+        if not difficulty_raw.isdigit():
+            return jsonify({
+                "error": "invalid_difficulty",
+                "message": "A dificuldade deve ser um número de 0 a 6.",
+            }), 400
         level = max(0, min(6, int(difficulty_raw)))
         items = [
             item for item in items
             if int(item.get("difficulty", 3)) <= level + 1
         ]
+        if not items:
+            return jsonify({
+                "error": "difficulty_not_found",
+                "message": "Nenhuma palavra atende à dificuldade informada.",
+            }), 404
 
-    return jsonify(random.choice(items or all_words()))
+    if not items:
+        return jsonify({
+            "error": "no_words",
+            "message": "Nenhuma palavra disponível para os filtros informados.",
+        }), 404
+
+    return jsonify(random.choice(items))
 
 
 ADMIN_PASSWORD = os.environ.get("FORCA_ADMIN_PASSWORD", "")

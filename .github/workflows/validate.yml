@@ -16,6 +16,11 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+
       - name: Install dependencies
         run: pip install -r requirements.txt
 
@@ -23,10 +28,81 @@ jobs:
         run: python -m py_compile app.py
 
       - name: Validate grouped JSON
-        run: python -c "import json; d=json.load(open('data/words.json', encoding='utf-8')); assert isinstance(d, dict) and isinstance(d.get('themes'), dict); assert len(d['themes']) == 18; assert all(isinstance(v, list) and v for v in d['themes'].values()); assert all(len(x.get('hints', [])) == 3 for v in d['themes'].values() for x in v); print('words.json OK')"
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          from collections import Counter
+          from pathlib import Path
+
+          data = json.loads(Path("data/words.json").read_text(encoding="utf-8"))
+          assert isinstance(data, dict) and isinstance(data.get("themes"), dict), "words.json must contain a themes object"
+          themes = data["themes"]
+          assert themes, "themes cannot be empty"
+
+          all_words = []
+          for theme, items in themes.items():
+              assert isinstance(theme, str) and theme.strip(), "theme names must be non-empty"
+              assert isinstance(items, list) and items, f"theme '{theme}' is empty"
+              normalized = []
+              for item in items:
+                  assert isinstance(item, dict), f"invalid entry in theme '{theme}'"
+                  word = str(item.get("word", "")).strip()
+                  assert word, f"empty word in theme '{theme}'"
+                  difficulty = item.get("difficulty")
+                  assert isinstance(difficulty, int) and 1 <= difficulty <= 7, f"invalid difficulty for '{word}'"
+                  language = str(item.get("language", "")).strip().lower()
+                  assert language, f"missing language for '{word}'"
+                  hints = item.get("hints")
+                  assert isinstance(hints, list) and len(hints) == 3 and all(str(h).strip() for h in hints), f"'{word}' must have exactly 3 hints"
+                  key = re.sub(r"\s+", " ", word.casefold().strip())
+                  normalized.append(key)
+                  all_words.append((theme, key))
+              duplicates = [w for w, count in Counter(normalized).items() if count > 1]
+              assert not duplicates, f"duplicate words inside theme '{theme}': {duplicates}"
+
+          frontend = Path("static/script.js").read_text(encoding="utf-8")
+          html = Path("index.html").read_text(encoding="utf-8")
+          listed_themes = re.findall(r'\["[^"]*","([^"]+)"\]', frontend.split("const THEMES=", 1)[1].split("];", 1)[0])
+          assert set(listed_themes) == set(themes), "frontend themes and words.json themes are out of sync"
+          assert "static/style.css" in html and "static/script.js" in html, "static entrypoint references are missing"
+          assert "data/words.json" in frontend, "frontend must load the word database"
+
+          print(f"words.json OK: {len(themes)} themes, {sum(len(v) for v in themes.values())} words")
+          PY
 
       - name: Validate JavaScript syntax
         run: node --check static/script.js
 
-      - name: Validate static entrypoint
-        run: python -c "from pathlib import Path; html=Path('index.html').read_text(encoding='utf-8'); assert 'static/style.css' in html and 'static/script.js' in html and 'data/words.json' in open('static/script.js', encoding='utf-8').read(); print('static entrypoint OK')"
+      - name: Validate Flask API filters
+        run: |
+          python - <<'PY'
+          import os
+          os.environ.setdefault("FORCA_ADMIN_PASSWORD", "test-password")
+          from app import app
+
+          client = app.test_client()
+
+          health = client.get("/api/health")
+          assert health.status_code == 200 and health.json["status"] == "ok"
+
+          themed = client.get("/api/word?theme=Anime&language=pt&difficulty=3")
+          assert themed.status_code == 200
+          assert themed.json["theme"] == "Anime"
+          assert themed.json["language"] == "pt"
+          assert int(themed.json["difficulty"]) <= 4
+
+          bad_theme = client.get("/api/word?theme=__NAO_EXISTE__")
+          assert bad_theme.status_code == 404
+
+          bad_language = client.get("/api/word?theme=Anime&language=en")
+          assert bad_language.status_code == 404
+
+          invalid_difficulty = client.get("/api/word?theme=Anime&difficulty=abc")
+          assert invalid_difficulty.status_code == 400
+
+          admin = client.post("/api/admin/check", json={"password": "test-password"})
+          assert admin.status_code == 200 and admin.json["valid"] is True
+
+          print("Flask API smoke tests OK")
+          PY

@@ -53,7 +53,8 @@ const TRANSLATIONS={
 const state={
  mode:"random",theme:"Anime",difficulty:2,language:"pt",word:"",hints:[],hintCount:0,
  errors:0,score:0,streak:0,round:1,correct:0,timeLeft:Infinity,timer:null,
- guessed:new Set(),usedWords:new Set(),database:[],unlocked:false,finished:false
+ guessed:new Set(),usedWords:new Set(),database:[],unlocked:false,finished:false,
+ playLanguage:"pt",languageFallback:false
 };
 
 function escapeHTML(value){
@@ -149,28 +150,48 @@ function difficultyLimit(){
  return Math.min(6,state.difficulty+(state.mode==="endless"?Math.floor(state.streak/2):0));
 }
 function wordId(item){return normalize(item.word).replace(/\s+/g," ");}
+function poolWordId(item){
+ return normalize(item.theme||state.theme)+"::"+String(item.language||"pt").toLowerCase()+"::"+wordId(item);
+}
 
 async function randomWord(){
  const db=await loadDatabase();
- const fallback={word:"Python",theme:"Tecnologia",difficulty:1,language:"pt",
-  hints:["É usado para criar programas.","É muito usado em automação e dados.","Também é o nome em inglês de uma cobra."]};
- if(!db.length)return fallback;
+ if(!db.length)return null;
 
  const level=difficultyLimit();
- const sameTheme=db.filter(function(item){return item.theme===state.theme;});
- if(!sameTheme.length)return fallback;
+ const sameTheme=db.filter(function(item){return normalize(item.theme)===normalize(state.theme);});
+ if(!sameTheme.length)return null;
 
  let pool=sameTheme.filter(function(item){return Number(item.difficulty||3)<=level+1;});
  if(!pool.length)pool=sameTheme.slice();
 
- let fresh=pool.filter(function(item){return !state.usedWords.has(wordId(item));});
+ const localized=pool.filter(function(item){
+  return String(item.language||"pt").toLowerCase()===String(state.language||"pt").toLowerCase();
+ });
+
+ state.languageFallback=false;
+ if(localized.length){
+  pool=localized;
+ }else{
+  const defaultLanguagePool=pool.filter(function(item){
+   return String(item.language||"pt").toLowerCase()==="pt";
+  });
+  if(!defaultLanguagePool.length)return null;
+  pool=defaultLanguagePool;
+  state.languageFallback=state.language!=="pt";
+ }
+
+ let fresh=pool.filter(function(item){return !state.usedWords.has(poolWordId(item));});
  if(!fresh.length){
-  state.usedWords.clear();
+  pool.forEach(function(item){state.usedWords.delete(poolWordId(item));});
   fresh=pool.slice();
  }
 
- const item=fresh[Math.floor(Math.random()*fresh.length)]||fallback;
- state.usedWords.add(wordId(item));
+ const item=fresh[Math.floor(Math.random()*fresh.length)]||null;
+ if(item){
+  state.usedWords.add(poolWordId(item));
+  state.playLanguage=String(item.language||"pt").toLowerCase();
+ }
  return item;
 }
 
@@ -197,7 +218,8 @@ function setRoundWord(item){
 async function startGame(){
  clearInterval(state.timer);
  state.finished=false;state.unlocked=false;state.errors=0;state.score=0;state.streak=0;
- state.round=1;state.correct=0;state.hintCount=0;state.guessed.clear();state.usedWords.clear();
+ state.round=1;state.correct=0;state.hintCount=0;state.guessed.clear();
+ state.languageFallback=false;state.playLanguage=state.language;
  $("adminControls").classList.add("hidden");$("adminPass").value="";closeDropdowns();saveSettings();
 
  let item;
@@ -208,6 +230,10 @@ async function startGame(){
   item={word:customWord,hints:hints.length?hints:["A palavra foi escolhida pelo anfitrião.","Observe as letras descobertas.","Use o tema como contexto."]};
  }else{
   item=await randomWord();
+  if(!item){
+   alert("Não há palavras disponíveis para esta combinação de tema, idioma e dificuldade.");
+   return;
+  }
  }
 
  setRoundWord(item);
@@ -251,7 +277,7 @@ function renderGame(){
   return '<span class="letter-slot">'+(state.guessed.has(keyOf(char))?escapeHTML(char):"_")+"</span>";
  }).join("");
 
- const keyboard=Array.from(new Set(KEYBOARDS[state.language]||LATIN));
+ const keyboard=Array.from(new Set(KEYBOARDS[state.playLanguage]||LATIN));
  $("keys").innerHTML=keyboard.map(function(char){
   const used=state.guessed.has(keyOf(char));
   return '<button type="button" data-char="'+escapeHTML(char)+'" class="'+(used?"used":"")+'"'+
@@ -261,7 +287,12 @@ function renderGame(){
  $("keys").querySelectorAll("button").forEach(function(button){
   button.addEventListener("click",function(){guess(button.dataset.char);});
  });
- $("game").dir=["ar","he"].includes(state.language)?"rtl":"ltr";
+ document.documentElement.lang=state.playLanguage;
+ $("game").dir=["ar","he"].includes(state.playLanguage)?"rtl":"ltr";
+ const selectedLanguage=(LANGUAGES.find(function(item){return item[0]===state.language;})||["pt","🇧🇷 Português"])[1];
+ $("roundLabel").textContent=state.mode==="endless"
+  ?"Rodada "+state.round+" • Nível "+(difficultyLimit()+1)+" • "+(state.languageFallback?"Banco: Português":selectedLanguage)
+  :"Rodada "+state.round+" • "+(state.languageFallback?"Banco: Português":selectedLanguage);
  updateTimer();
 }
 
@@ -296,6 +327,7 @@ async function nextEndlessRound(){
  state.round+=1;state.errors=0;state.correct=0;state.hintCount=0;state.guessed.clear();
  const item=await randomWord();
  if(state.finished)return;
+ if(!item){finish(false,"Não há mais palavras disponíveis para esta configuração.");return;}
  setRoundWord(item);renderGame();runTimer();
 }
 
