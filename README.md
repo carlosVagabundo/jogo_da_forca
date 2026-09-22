@@ -54,9 +54,11 @@ Cada tema possui várias palavras com dificuldade, idioma e três dicas. Para ad
 - 8 erros por rodada.
 - Timer de 30 segundos a 60 minutos e tempo infinito.
 - 18 temas.
-- 7 níveis de dificuldade.
-- 21 idiomas.
-- Teclado virtual adaptado ao idioma.
+- 7 níveis de dificuldade, com conteúdo dos níveis 1 a 7 em todos os temas.
+- 21 opções de idioma/teclado.
+- Banco atual com 162 palavras; as palavras cadastradas atualmente estão em português.
+- Quando não houver uma palavra cadastrada no idioma escolhido, o jogo informa isso na rodada e usa português também no teclado para manter a partida jogável.
+- Teclado virtual adaptado ao idioma disponível.
 - Teclado físico sem interferir em campos de texto, senha ou seleção.
 - Dicas progressivas durante a partida.
 - Pontuação e sequência.
@@ -74,6 +76,7 @@ Agora o frontend foi corrigido para:
 - carregar data/words.json diretamente no navegador;
 - usar caminhos relativos compatíveis com um repositório publicado em github.io/NOME-DO-REPOSITORIO/;
 - não depender do Flask para sortear palavras;
+- respeitar tema, dificuldade e idioma disponível sem cair silenciosamente em outra categoria;
 - não depender do Flask para iniciar uma partida;
 - usar o tradutor local como fallback;
 - deixar o Admin protegido pelo backend disponível apenas na versão Flask.
