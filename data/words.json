@@ -1,148 +1,1660 @@
 {
   "themes": {
     "Anime": [
-      {"word":"Naruto","difficulty":2,"language":"pt","hints":["É protagonista de uma história sobre ninjas.","Pertence ao clã Uzumaki.","Seu objetivo envolve se tornar Hokage."]},
-      {"word":"Itachi","difficulty":4,"language":"pt","hints":["É um personagem do clã Uchiha.","É irmão mais velho de Sasuke.","Faz parte da história de Naruto."]},
-      {"word":"Goku","difficulty":1,"language":"pt","hints":["É protagonista de Dragon Ball.","É um guerreiro Saiyajin.","Seu rival clássico é Vegeta."]},
-      {"word":"Tanjiro","difficulty":3,"language":"pt","hints":["É protagonista de Demon Slayer.","Viaja em busca de uma cura para sua irmã.","Usa técnicas de respiração."]},
-      {"word":"Luffy","difficulty":2,"language":"pt","hints":["É protagonista de One Piece.","Comanda os Piratas do Chapéu de Palha.","Busca o tesouro conhecido como One Piece."]},
-      {"word":"Gohan","difficulty":3,"language":"pt","hints":["Faz parte do universo de Dragon Ball.","É filho de Goku.","Também pode alcançar formas de grande poder."]}
+      {
+        "word": "Naruto",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É protagonista de uma história sobre ninjas.",
+          "Pertence ao clã Uzumaki.",
+          "Seu objetivo envolve se tornar Hokage."
+        ]
+      },
+      {
+        "word": "Itachi",
+        "difficulty": 4,
+        "language": "pt",
+        "hints": [
+          "É um personagem do clã Uchiha.",
+          "É irmão mais velho de Sasuke.",
+          "Faz parte da história de Naruto."
+        ]
+      },
+      {
+        "word": "Goku",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É protagonista de Dragon Ball.",
+          "É um guerreiro Saiyajin.",
+          "Seu rival clássico é Vegeta."
+        ]
+      },
+      {
+        "word": "Tanjiro",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É protagonista de Demon Slayer.",
+          "Viaja em busca de uma cura para sua irmã.",
+          "Usa técnicas de respiração."
+        ]
+      },
+      {
+        "word": "Luffy",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É protagonista de One Piece.",
+          "Comanda os Piratas do Chapéu de Palha.",
+          "Busca o tesouro conhecido como One Piece."
+        ]
+      },
+      {
+        "word": "Gohan",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "Faz parte do universo de Dragon Ball.",
+          "É filho de Goku.",
+          "Também pode alcançar formas de grande poder."
+        ]
+      },
+      {
+        "word": "Kakashi",
+        "difficulty": 5,
+        "language": "pt",
+        "hints": [
+          "É um ninja experiente do universo de Naruto.",
+          "Foi líder do Time 7.",
+          "É conhecido por copiar técnicas com seu Sharingan."
+        ]
+      },
+      {
+        "word": "Rengoku",
+        "difficulty": 6,
+        "language": "pt",
+        "hints": [
+          "É um personagem de Demon Slayer.",
+          "É um dos Hashira.",
+          "É conhecido como Hashira das Chamas."
+        ]
+      },
+      {
+        "word": "Sukuna",
+        "difficulty": 7,
+        "language": "pt",
+        "hints": [
+          "É uma das principais ameaças de Jujutsu Kaisen.",
+          "É conhecido como Rei das Maldições.",
+          "Sua história está ligada a Itadori."
+        ]
+      }
     ],
     "Séries": [
-      {"word":"Wednesday","difficulty":3,"language":"pt","hints":["É protagonista de uma série baseada na Família Addams.","Estuda na Academia Nevermore.","É conhecida por seu humor sombrio."]},
-      {"word":"Sherlock","difficulty":3,"language":"pt","hints":["É um detetive famoso em adaptações para a televisão.","É conhecido por deduções brilhantes.","Seu parceiro clássico é Watson."]},
-      {"word":"Loki","difficulty":2,"language":"pt","hints":["É associado ao universo de heróis da Marvel.","É conhecido como irmão de Thor em muitas histórias.","Sua série apresenta versões e linhas do tempo diferentes."]},
-      {"word":"Arcane","difficulty":3,"language":"pt","hints":["É uma série animada ligada ao universo de League of Legends.","A história envolve Piltover e Zaun.","Entre seus personagens estão Vi e Jinx."]},
-      {"word":"Bridgerton","difficulty":4,"language":"pt","hints":["É uma série ambientada na alta sociedade inglesa.","A história acompanha famílias e relações sociais.","É baseada em romances de Julia Quinn."]},
-      {"word":"TheOffice","difficulty":4,"language":"pt","hints":["É uma comédia ambientada em um escritório.","Acompanha funcionários de uma empresa de papel.","Michael Scott é um dos personagens centrais."]}
+      {
+        "word": "Wednesday",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É protagonista de uma série baseada na Família Addams.",
+          "Estuda na Academia Nevermore.",
+          "É conhecida por seu humor sombrio."
+        ]
+      },
+      {
+        "word": "Sherlock",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É um detetive famoso em adaptações para a televisão.",
+          "É conhecido por deduções brilhantes.",
+          "Seu parceiro clássico é Watson."
+        ]
+      },
+      {
+        "word": "Loki",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É associado ao universo de heróis da Marvel.",
+          "É conhecido como irmão de Thor em muitas histórias.",
+          "Sua série apresenta versões e linhas do tempo diferentes."
+        ]
+      },
+      {
+        "word": "Arcane",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É uma série animada ligada ao universo de League of Legends.",
+          "A história envolve Piltover e Zaun.",
+          "Entre seus personagens estão Vi e Jinx."
+        ]
+      },
+      {
+        "word": "Bridgerton",
+        "difficulty": 4,
+        "language": "pt",
+        "hints": [
+          "É uma série ambientada na alta sociedade inglesa.",
+          "A história acompanha famílias e relações sociais.",
+          "É baseada em romances de Julia Quinn."
+        ]
+      },
+      {
+        "word": "TheOffice",
+        "difficulty": 4,
+        "language": "pt",
+        "hints": [
+          "É uma comédia ambientada em um escritório.",
+          "Acompanha funcionários de uma empresa de papel.",
+          "Michael Scott é um dos personagens centrais."
+        ]
+      },
+      {
+        "word": "Black Mirror",
+        "difficulty": 5,
+        "language": "pt",
+        "hints": [
+          "É uma série de ficção científica e antologia.",
+          "Seus episódios exploram impactos da tecnologia.",
+          "Cada história apresenta personagens e cenários diferentes."
+        ]
+      },
+      {
+        "word": "Fleabag",
+        "difficulty": 6,
+        "language": "pt",
+        "hints": [
+          "É uma série britânica de comédia dramática.",
+          "A protagonista também é conhecida pelo apelido que dá nome à série.",
+          "A narrativa usa interação direta com o público em vários momentos."
+        ]
+      },
+      {
+        "word": "True Detective",
+        "difficulty": 7,
+        "language": "pt",
+        "hints": [
+          "É uma série policial em formato de antologia.",
+          "Cada temporada conta uma história independente.",
+          "A investigação e o desenvolvimento dos personagens têm papel central."
+        ]
+      }
     ],
     "Filmes": [
-      {"word":"Godzilla","difficulty":3,"language":"pt","hints":["É um monstro gigante do cinema.","É associado ao Japão.","Costuma enfrentar outras criaturas colossais."]},
-      {"word":"Matrix","difficulty":3,"language":"pt","hints":["É um filme de ficção científica.","Possui um personagem chamado Neo.","Explora a ideia de uma realidade simulada."]},
-      {"word":"Titanic","difficulty":2,"language":"pt","hints":["É um filme de grande sucesso ambientado em uma viagem marítima.","A história acompanha Jack e Rose.","É inspirado no famoso navio Titanic."]},
-      {"word":"Inception","difficulty":4,"language":"pt","hints":["É um filme de ficção científica.","A história envolve sonhos e diferentes níveis de realidade.","Leonardo DiCaprio interpreta o protagonista."]},
-      {"word":"Avatar","difficulty":2,"language":"pt","hints":["É uma aventura de ficção científica.","A história se passa em Pandora.","Os Na'vi são um dos povos centrais."]},
-      {"word":"Interstellar","difficulty":4,"language":"pt","hints":["É um filme de ficção científica espacial.","A história envolve viagens pelo espaço.","Explora temas como tempo, gravidade e sobrevivência."]}
+      {
+        "word": "Godzilla",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É um monstro gigante do cinema.",
+          "É associado ao Japão.",
+          "Costuma enfrentar outras criaturas colossais."
+        ]
+      },
+      {
+        "word": "Matrix",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É um filme de ficção científica.",
+          "Possui um personagem chamado Neo.",
+          "Explora a ideia de uma realidade simulada."
+        ]
+      },
+      {
+        "word": "Titanic",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É um filme de grande sucesso ambientado em uma viagem marítima.",
+          "A história acompanha Jack e Rose.",
+          "É inspirado no famoso navio Titanic."
+        ]
+      },
+      {
+        "word": "Inception",
+        "difficulty": 4,
+        "language": "pt",
+        "hints": [
+          "É um filme de ficção científica.",
+          "A história envolve sonhos e diferentes níveis de realidade.",
+          "Leonardo DiCaprio interpreta o protagonista."
+        ]
+      },
+      {
+        "word": "Avatar",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É uma aventura de ficção científica.",
+          "A história se passa em Pandora.",
+          "Os Na'vi são um dos povos centrais."
+        ]
+      },
+      {
+        "word": "Interstellar",
+        "difficulty": 4,
+        "language": "pt",
+        "hints": [
+          "É um filme de ficção científica espacial.",
+          "A história envolve viagens pelo espaço.",
+          "Explora temas como tempo, gravidade e sobrevivência."
+        ]
+      },
+      {
+        "word": "Oppenheimer",
+        "difficulty": 5,
+        "language": "pt",
+        "hints": [
+          "É um filme biográfico e histórico.",
+          "Acompanha o cientista J. Robert Oppenheimer.",
+          "A trama está ligada ao Projeto Manhattan."
+        ]
+      },
+      {
+        "word": "Parasite",
+        "difficulty": 6,
+        "language": "pt",
+        "hints": [
+          "É um filme sul-coreano.",
+          "A história acompanha duas famílias de condições sociais diferentes.",
+          "Mistura drama, suspense e sátira social."
+        ]
+      },
+      {
+        "word": "Tudo em Todo Lugar",
+        "difficulty": 7,
+        "language": "pt",
+        "hints": [
+          "É um filme de ficção científica e fantasia.",
+          "A história envolve múltiplas realidades.",
+          "A protagonista é Evelyn Wang."
+        ]
+      }
     ],
     "Personagens": [
-      {"word":"Batman","difficulty":1,"language":"pt","hints":["É um herói ligado a Gotham City.","Não possui superpoderes naturais.","Usa tecnologia e treinamento para combater o crime."]},
-      {"word":"Harry Potter","difficulty":2,"language":"pt","hints":["É o protagonista de uma famosa série de livros e filmes.","Estuda em Hogwarts.","Seu inimigo mais conhecido é Voldemort."]},
-      {"word":"Hermione","difficulty":2,"language":"pt","hints":["É uma personagem de Harry Potter.","É conhecida por sua dedicação aos estudos.","É amiga de Harry e Ron."]},
-      {"word":"Darth Vader","difficulty":3,"language":"pt","hints":["É um personagem de Star Wars.","Usa uma armadura preta característica.","Está ligado à história de Luke Skywalker."]},
-      {"word":"Jack Sparrow","difficulty":3,"language":"pt","hints":["É um personagem da franquia Piratas do Caribe.","É um capitão de navio.","É conhecido por seu jeito imprevisível."]},
-      {"word":"Shrek","difficulty":1,"language":"pt","hints":["É um ogro protagonista de uma franquia de animação.","Mora em um pântano.","Burro é um de seus companheiros mais conhecidos."]}
+      {
+        "word": "Batman",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É um herói ligado a Gotham City.",
+          "Não possui superpoderes naturais.",
+          "Usa tecnologia e treinamento para combater o crime."
+        ]
+      },
+      {
+        "word": "Harry Potter",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É o protagonista de uma famosa série de livros e filmes.",
+          "Estuda em Hogwarts.",
+          "Seu inimigo mais conhecido é Voldemort."
+        ]
+      },
+      {
+        "word": "Hermione",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É uma personagem de Harry Potter.",
+          "É conhecida por sua dedicação aos estudos.",
+          "É amiga de Harry e Ron."
+        ]
+      },
+      {
+        "word": "Darth Vader",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É um personagem de Star Wars.",
+          "Usa uma armadura preta característica.",
+          "Está ligado à história de Luke Skywalker."
+        ]
+      },
+      {
+        "word": "Jack Sparrow",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É um personagem da franquia Piratas do Caribe.",
+          "É um capitão de navio.",
+          "É conhecido por seu jeito imprevisível."
+        ]
+      },
+      {
+        "word": "Shrek",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É um ogro protagonista de uma franquia de animação.",
+          "Mora em um pântano.",
+          "Burro é um de seus companheiros mais conhecidos."
+        ]
+      },
+      {
+        "word": "Geralt",
+        "difficulty": 5,
+        "language": "pt",
+        "hints": [
+          "É o protagonista de uma série de fantasia.",
+          "É conhecido como um bruxo caçador de monstros.",
+          "É associado ao universo de The Witcher."
+        ]
+      },
+      {
+        "word": "Kratos",
+        "difficulty": 6,
+        "language": "pt",
+        "hints": [
+          "É protagonista de uma famosa série de jogos.",
+          "Está ligado à mitologia grega e nórdica.",
+          "É conhecido por lutar com armas lendárias."
+        ]
+      },
+      {
+        "word": "Hannibal Lecter",
+        "difficulty": 7,
+        "language": "pt",
+        "hints": [
+          "É um personagem de obras de suspense e terror.",
+          "É conhecido por sua inteligência e comportamento criminoso.",
+          "Foi criado pelo escritor Thomas Harris."
+        ]
+      }
     ],
     "Jogos": [
-      {"word":"Sonic","difficulty":1,"language":"pt","hints":["É um personagem famoso dos videogames.","É conhecido por sua enorme velocidade.","Seu principal inimigo é Dr. Eggman."]},
-      {"word":"Tails","difficulty":2,"language":"pt","hints":["É um aliado de Sonic.","Possui duas caudas.","É conhecido por sua habilidade com máquinas."]},
-      {"word":"Minecraft","difficulty":2,"language":"pt","hints":["É um jogo de construção e exploração.","O mundo é formado por blocos.","Possui modos sobrevivência e criativo."]},
-      {"word":"Pac-Man","difficulty":1,"language":"pt","hints":["É um clássico dos arcades.","O objetivo envolve comer pontos pelo labirinto.","É perseguido por fantasmas coloridos."]},
-      {"word":"Zelda","difficulty":3,"language":"pt","hints":["É uma franquia de jogos de aventura.","Link é um dos personagens centrais.","A princesa Zelda dá nome à série."]},
-      {"word":"Mario","difficulty":1,"language":"pt","hints":["É um personagem muito conhecido dos videogames.","É associado à Nintendo.","Seu irmão se chama Luigi."]}
+      {
+        "word": "Sonic",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É um personagem famoso dos videogames.",
+          "É conhecido por sua enorme velocidade.",
+          "Seu principal inimigo é Dr. Eggman."
+        ]
+      },
+      {
+        "word": "Tails",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É um aliado de Sonic.",
+          "Possui duas caudas.",
+          "É conhecido por sua habilidade com máquinas."
+        ]
+      },
+      {
+        "word": "Minecraft",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É um jogo de construção e exploração.",
+          "O mundo é formado por blocos.",
+          "Possui modos sobrevivência e criativo."
+        ]
+      },
+      {
+        "word": "Pac-Man",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É um clássico dos arcades.",
+          "O objetivo envolve comer pontos pelo labirinto.",
+          "É perseguido por fantasmas coloridos."
+        ]
+      },
+      {
+        "word": "Zelda",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É uma franquia de jogos de aventura.",
+          "Link é um dos personagens centrais.",
+          "A princesa Zelda dá nome à série."
+        ]
+      },
+      {
+        "word": "Mario",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É um personagem muito conhecido dos videogames.",
+          "É associado à Nintendo.",
+          "Seu irmão se chama Luigi."
+        ]
+      },
+      {
+        "word": "Hollow Knight",
+        "difficulty": 5,
+        "language": "pt",
+        "hints": [
+          "É um jogo de ação e exploração em um reino subterrâneo.",
+          "O protagonista é um pequeno cavaleiro.",
+          "É conhecido por sua atmosfera sombria e mapas interligados."
+        ]
+      },
+      {
+        "word": "Bloodborne",
+        "difficulty": 6,
+        "language": "pt",
+        "hints": [
+          "É um jogo de ação e RPG.",
+          "A história se passa na cidade de Yharnam.",
+          "É conhecido por combate exigente e atmosfera gótica."
+        ]
+      },
+      {
+        "word": "NieR Automata",
+        "difficulty": 7,
+        "language": "pt",
+        "hints": [
+          "É um RPG de ação japonês.",
+          "A história envolve androides e máquinas.",
+          "2B é uma das personagens centrais."
+        ]
+      }
     ],
     "Animais": [
-      {"word":"Cachorro","difficulty":1,"language":"pt","hints":["É um animal doméstico muito comum.","É conhecido por seu olfato.","É considerado um companheiro do ser humano."]},
-      {"word":"Gato","difficulty":1,"language":"pt","hints":["É um animal doméstico comum.","É conhecido por miar.","Muitas pessoas o criam como animal de estimação."]},
-      {"word":"Pinguim","difficulty":2,"language":"pt","hints":["É uma ave que não voa.","Vive principalmente no Hemisfério Sul.","É adaptado para nadar."]},
-      {"word":"Girafa","difficulty":2,"language":"pt","hints":["É um mamífero de pescoço muito longo.","Vive principalmente em regiões da África.","Sua altura ajuda a alcançar folhas de árvores."]},
-      {"word":"Golfinho","difficulty":2,"language":"pt","hints":["É um mamífero aquático.","É conhecido por sua inteligência.","Usa sons para se comunicar e se orientar."]},
-      {"word":"Polvo","difficulty":2,"language":"pt","hints":["É um animal marinho.","Possui oito braços.","Pode usar camuflagem para se esconder."]}
+      {
+        "word": "Cachorro",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É um animal doméstico muito comum.",
+          "É conhecido por seu olfato.",
+          "É considerado um companheiro do ser humano."
+        ]
+      },
+      {
+        "word": "Gato",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É um animal doméstico comum.",
+          "É conhecido por miar.",
+          "Muitas pessoas o criam como animal de estimação."
+        ]
+      },
+      {
+        "word": "Pinguim",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É uma ave que não voa.",
+          "Vive principalmente no Hemisfério Sul.",
+          "É adaptado para nadar."
+        ]
+      },
+      {
+        "word": "Girafa",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É um mamífero de pescoço muito longo.",
+          "Vive principalmente em regiões da África.",
+          "Sua altura ajuda a alcançar folhas de árvores."
+        ]
+      },
+      {
+        "word": "Golfinho",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É um mamífero aquático.",
+          "É conhecido por sua inteligência.",
+          "Usa sons para se comunicar e se orientar."
+        ]
+      },
+      {
+        "word": "Polvo",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É um animal marinho.",
+          "Possui oito braços.",
+          "Pode usar camuflagem para se esconder."
+        ]
+      },
+      {
+        "word": "Ornitorrinco",
+        "difficulty": 5,
+        "language": "pt",
+        "hints": [
+          "É um mamífero semiaquático.",
+          "Possui características incomuns para um mamífero.",
+          "É nativo da Austrália."
+        ]
+      },
+      {
+        "word": "Axolote",
+        "difficulty": 6,
+        "language": "pt",
+        "hints": [
+          "É um anfíbio.",
+          "É conhecido por manter características larvais na fase adulta.",
+          "É associado a ambientes de água doce do México."
+        ]
+      },
+      {
+        "word": "Saiga",
+        "difficulty": 7,
+        "language": "pt",
+        "hints": [
+          "É um antílope de aparência incomum.",
+          "Possui um focinho grande e flexível.",
+          "É encontrado em regiões da Ásia Central."
+        ]
+      }
     ],
     "Esportes": [
-      {"word":"Futebol","difficulty":1,"language":"pt","hints":["É jogado com uma bola e dois gols.","Normalmente há onze jogadores por equipe em campo.","É um dos esportes mais populares do mundo."]},
-      {"word":"Basquete","difficulty":2,"language":"pt","hints":["É jogado com uma bola e uma cesta.","As equipes tentam marcar no aro adversário.","É muito popular em vários países."]},
-      {"word":"Voleibol","difficulty":2,"language":"pt","hints":["É jogado por equipes separadas por uma rede.","A bola deve passar por cima da rede.","Os jogadores usam principalmente as mãos e os braços."]},
-      {"word":"Tênis","difficulty":1,"language":"pt","hints":["É jogado com raquetes e uma bola.","Pode ser disputado individualmente ou em duplas.","A bola passa por cima de uma rede."]},
-      {"word":"Natação","difficulty":2,"language":"pt","hints":["É um esporte praticado na água.","Existem diferentes estilos de prova.","Pode envolver piscinas ou águas abertas."]},
-      {"word":"Skate","difficulty":2,"language":"pt","hints":["É praticado usando uma prancha com rodas.","Permite manobras e deslocamento.","Também possui modalidades competitivas."]}
+      {
+        "word": "Futebol",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É jogado com uma bola e dois gols.",
+          "Normalmente há onze jogadores por equipe em campo.",
+          "É um dos esportes mais populares do mundo."
+        ]
+      },
+      {
+        "word": "Basquete",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É jogado com uma bola e uma cesta.",
+          "As equipes tentam marcar no aro adversário.",
+          "É muito popular em vários países."
+        ]
+      },
+      {
+        "word": "Voleibol",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É jogado por equipes separadas por uma rede.",
+          "A bola deve passar por cima da rede.",
+          "Os jogadores usam principalmente as mãos e os braços."
+        ]
+      },
+      {
+        "word": "Tênis",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É jogado com raquetes e uma bola.",
+          "Pode ser disputado individualmente ou em duplas.",
+          "A bola passa por cima de uma rede."
+        ]
+      },
+      {
+        "word": "Natação",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É um esporte praticado na água.",
+          "Existem diferentes estilos de prova.",
+          "Pode envolver piscinas ou águas abertas."
+        ]
+      },
+      {
+        "word": "Skate",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É praticado usando uma prancha com rodas.",
+          "Permite manobras e deslocamento.",
+          "Também possui modalidades competitivas."
+        ]
+      },
+      {
+        "word": "Badminton",
+        "difficulty": 5,
+        "language": "pt",
+        "hints": [
+          "É praticado com raquetes.",
+          "Usa uma peteca chamada volante.",
+          "Pode ser disputado individualmente ou em duplas."
+        ]
+      },
+      {
+        "word": "Pentatlo Moderno",
+        "difficulty": 6,
+        "language": "pt",
+        "hints": [
+          "É uma modalidade esportiva combinada.",
+          "Reúne diferentes provas em uma única competição.",
+          "Exige habilidades físicas variadas."
+        ]
+      },
+      {
+        "word": "Skeleton",
+        "difficulty": 7,
+        "language": "pt",
+        "hints": [
+          "É um esporte de inverno de descida em uma pista de gelo.",
+          "O atleta desliza deitado sobre um pequeno trenó.",
+          "A cabeça fica voltada para a frente durante a descida."
+        ]
+      }
     ],
     "Comidas": [
-      {"word":"Pizza","difficulty":1,"language":"pt","hints":["É uma comida feita com massa assada.","Pode receber diversos tipos de cobertura.","É muito associada à culinária italiana."]},
-      {"word":"Hamburguer","difficulty":2,"language":"pt","hints":["É montado normalmente dentro de um pão.","Costuma ter um disco de carne ou alternativa vegetal.","Pode receber queijo, molho e outros ingredientes."]},
-      {"word":"Lasanha","difficulty":2,"language":"pt","hints":["É preparada em camadas.","Pode levar massa, molho e queijo.","É muito conhecida na culinária italiana."]},
-      {"word":"Sushi","difficulty":2,"language":"pt","hints":["É associado à culinária japonesa.","Geralmente envolve arroz preparado com vinagre.","Pode ter peixe, legumes ou outros ingredientes."]},
-      {"word":"Brigadeiro","difficulty":2,"language":"pt","hints":["É um doce muito popular no Brasil.","Costuma levar leite condensado e chocolate.","É comum em festas e comemorações."]},
-      {"word":"Coxinha","difficulty":1,"language":"pt","hints":["É um salgado muito popular no Brasil.","Costuma ter recheio de frango.","Tem formato que lembra uma pequena gota."]}
+      {
+        "word": "Pizza",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É uma comida feita com massa assada.",
+          "Pode receber diversos tipos de cobertura.",
+          "É muito associada à culinária italiana."
+        ]
+      },
+      {
+        "word": "Hamburguer",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É montado normalmente dentro de um pão.",
+          "Costuma ter um disco de carne ou alternativa vegetal.",
+          "Pode receber queijo, molho e outros ingredientes."
+        ]
+      },
+      {
+        "word": "Lasanha",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É preparada em camadas.",
+          "Pode levar massa, molho e queijo.",
+          "É muito conhecida na culinária italiana."
+        ]
+      },
+      {
+        "word": "Sushi",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É associado à culinária japonesa.",
+          "Geralmente envolve arroz preparado com vinagre.",
+          "Pode ter peixe, legumes ou outros ingredientes."
+        ]
+      },
+      {
+        "word": "Brigadeiro",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É um doce muito popular no Brasil.",
+          "Costuma levar leite condensado e chocolate.",
+          "É comum em festas e comemorações."
+        ]
+      },
+      {
+        "word": "Coxinha",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É um salgado muito popular no Brasil.",
+          "Costuma ter recheio de frango.",
+          "Tem formato que lembra uma pequena gota."
+        ]
+      },
+      {
+        "word": "Ratatouille",
+        "difficulty": 5,
+        "language": "pt",
+        "hints": [
+          "É um prato tradicional da culinária francesa.",
+          "É preparado principalmente com legumes.",
+          "Também dá nome a um filme de animação famoso."
+        ]
+      },
+      {
+        "word": "Bouillabaisse",
+        "difficulty": 6,
+        "language": "pt",
+        "hints": [
+          "É uma preparação tradicional do sul da França.",
+          "É associada à cidade de Marselha.",
+          "Pode reunir diferentes peixes e frutos do mar."
+        ]
+      },
+      {
+        "word": "Beef Wellington",
+        "difficulty": 7,
+        "language": "pt",
+        "hints": [
+          "É um prato de origem britânica.",
+          "Tradicionalmente envolve carne envolta em massa.",
+          "Também pode ser preparado com cogumelos e outros ingredientes."
+        ]
+      }
     ],
     "Tecnologia": [
-      {"word":"Python","difficulty":1,"language":"pt","hints":["É uma linguagem de programação.","É usada em automação, dados e inteligência artificial.","Seu nome também é o de uma cobra em inglês."]},
-      {"word":"JavaScript","difficulty":3,"language":"pt","hints":["É muito usada no desenvolvimento web.","Roda diretamente nos navegadores.","Pode manipular páginas e responder a eventos."]},
-      {"word":"Computador","difficulty":1,"language":"pt","hints":["É uma máquina usada para processar informações.","Pode executar programas.","Pode ser usado para estudo, trabalho e entretenimento."]},
-      {"word":"Algoritmo","difficulty":3,"language":"pt","hints":["É uma sequência organizada de passos.","Pode ser usada para resolver problemas.","É importante em programação e ciência da computação."]},
-      {"word":"Internet","difficulty":2,"language":"pt","hints":["Conecta dispositivos e redes ao redor do mundo.","Permite acesso a serviços e informações.","É usada para comunicação e compartilhamento de dados."]},
-      {"word":"Robotica","difficulty":3,"language":"pt","hints":["É uma área que envolve robôs e sistemas automatizados.","Combina diferentes áreas da tecnologia.","Pode ser aplicada na indústria, pesquisa e educação."]}
+      {
+        "word": "Python",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É uma linguagem de programação.",
+          "É usada em automação, dados e inteligência artificial.",
+          "Seu nome também é o de uma cobra em inglês."
+        ]
+      },
+      {
+        "word": "JavaScript",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É muito usada no desenvolvimento web.",
+          "Roda diretamente nos navegadores.",
+          "Pode manipular páginas e responder a eventos."
+        ]
+      },
+      {
+        "word": "Computador",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É uma máquina usada para processar informações.",
+          "Pode executar programas.",
+          "Pode ser usado para estudo, trabalho e entretenimento."
+        ]
+      },
+      {
+        "word": "Algoritmo",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É uma sequência organizada de passos.",
+          "Pode ser usada para resolver problemas.",
+          "É importante em programação e ciência da computação."
+        ]
+      },
+      {
+        "word": "Internet",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "Conecta dispositivos e redes ao redor do mundo.",
+          "Permite acesso a serviços e informações.",
+          "É usada para comunicação e compartilhamento de dados."
+        ]
+      },
+      {
+        "word": "Robotica",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É uma área que envolve robôs e sistemas automatizados.",
+          "Combina diferentes áreas da tecnologia.",
+          "Pode ser aplicada na indústria, pesquisa e educação."
+        ]
+      },
+      {
+        "word": "TypeScript",
+        "difficulty": 5,
+        "language": "pt",
+        "hints": [
+          "É uma linguagem baseada em JavaScript.",
+          "Adiciona recursos de tipagem ao desenvolvimento.",
+          "É muito usada em projetos web de maior escala."
+        ]
+      },
+      {
+        "word": "Kubernetes",
+        "difficulty": 6,
+        "language": "pt",
+        "hints": [
+          "É uma plataforma de orquestração de contêineres.",
+          "É usada para gerenciar aplicações distribuídas.",
+          "Seu nome costuma ser abreviado como K8s."
+        ]
+      },
+      {
+        "word": "WebAssembly",
+        "difficulty": 7,
+        "language": "pt",
+        "hints": [
+          "É um formato de código portátil para a web.",
+          "Permite executar módulos de baixo nível no navegador.",
+          "É conhecido pela sigla Wasm."
+        ]
+      }
     ],
     "Países e Lugares": [
-      {"word":"Brasil","difficulty":1,"language":"pt","hints":["É um país da América do Sul.","Seu idioma oficial é o português.","Possui grande diversidade cultural e natural."]},
-      {"word":"Curitiba","difficulty":2,"language":"pt","hints":["É uma cidade brasileira.","É a capital do Paraná.","É conhecida por soluções de transporte urbano."]},
-      {"word":"Japão","difficulty":2,"language":"pt","hints":["É um país insular da Ásia.","Sua capital é Tóquio.","É conhecido por sua cultura e tecnologia."]},
-      {"word":"Paris","difficulty":2,"language":"pt","hints":["É uma grande cidade europeia.","É a capital da França.","É conhecida pela Torre Eiffel."]},
-      {"word":"Amazônia","difficulty":3,"language":"pt","hints":["É uma grande região de floresta tropical.","Está presente em vários países da América do Sul.","Possui enorme biodiversidade."]},
-      {"word":"Canadá","difficulty":2,"language":"pt","hints":["É um país da América do Norte.","Sua capital é Ottawa.","É conhecido por grandes áreas naturais e clima frio em várias regiões."]}
+      {
+        "word": "Brasil",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É um país da América do Sul.",
+          "Seu idioma oficial é o português.",
+          "Possui grande diversidade cultural e natural."
+        ]
+      },
+      {
+        "word": "Curitiba",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É uma cidade brasileira.",
+          "É a capital do Paraná.",
+          "É conhecida por soluções de transporte urbano."
+        ]
+      },
+      {
+        "word": "Japão",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É um país insular da Ásia.",
+          "Sua capital é Tóquio.",
+          "É conhecido por sua cultura e tecnologia."
+        ]
+      },
+      {
+        "word": "Paris",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É uma grande cidade europeia.",
+          "É a capital da França.",
+          "É conhecida pela Torre Eiffel."
+        ]
+      },
+      {
+        "word": "Amazônia",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É uma grande região de floresta tropical.",
+          "Está presente em vários países da América do Sul.",
+          "Possui enorme biodiversidade."
+        ]
+      },
+      {
+        "word": "Canadá",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É um país da América do Norte.",
+          "Sua capital é Ottawa.",
+          "É conhecido por grandes áreas naturais e clima frio em várias regiões."
+        ]
+      },
+      {
+        "word": "Madagascar",
+        "difficulty": 5,
+        "language": "pt",
+        "hints": [
+          "É um país insular.",
+          "Fica na costa sudeste da África.",
+          "É conhecido por sua biodiversidade única."
+        ]
+      },
+      {
+        "word": "Cazaquistão",
+        "difficulty": 6,
+        "language": "pt",
+        "hints": [
+          "É um grande país da Ásia Central.",
+          "Sua capital é Astana.",
+          "Possui vastos territórios de estepe."
+        ]
+      },
+      {
+        "word": "Liechtenstein",
+        "difficulty": 7,
+        "language": "pt",
+        "hints": [
+          "É um pequeno país europeu.",
+          "Fica entre a Suíça e a Áustria.",
+          "Sua capital é Vaduz."
+        ]
+      }
     ],
     "Ciência": [
-      {"word":"Fotossíntese","difficulty":4,"language":"pt","hints":["É um processo realizado por plantas e algas.","Usa energia luminosa.","Ajuda a produzir matéria orgânica a partir de substâncias simples."]},
-      {"word":"Astronomia","difficulty":4,"language":"pt","hints":["Estuda objetos e fenômenos do espaço.","Envolve estrelas, planetas e galáxias.","É diferente de astrologia."]},
-      {"word":"Gravidade","difficulty":3,"language":"pt","hints":["É uma interação associada à massa.","Ajuda a manter objetos próximos à superfície da Terra.","Também influencia órbitas no espaço."]},
-      {"word":"Átomo","difficulty":3,"language":"pt","hints":["É uma unidade básica da matéria.","Possui núcleo e elétrons.","Prótons e nêutrons ficam no núcleo."]},
-      {"word":"Vulcão","difficulty":2,"language":"pt","hints":["É uma abertura ou estrutura geológica.","Pode liberar lava, cinzas e gases.","Existem vulcões ativos, dormentes e extintos."]},
-      {"word":"Ecologia","difficulty":3,"language":"pt","hints":["Estuda as relações entre seres vivos e ambiente.","Analisa ecossistemas.","Considera fatores bióticos e abióticos."]}
+      {
+        "word": "Fotossíntese",
+        "difficulty": 4,
+        "language": "pt",
+        "hints": [
+          "É um processo realizado por plantas e algas.",
+          "Usa energia luminosa.",
+          "Ajuda a produzir matéria orgânica a partir de substâncias simples."
+        ]
+      },
+      {
+        "word": "Astronomia",
+        "difficulty": 4,
+        "language": "pt",
+        "hints": [
+          "Estuda objetos e fenômenos do espaço.",
+          "Envolve estrelas, planetas e galáxias.",
+          "É diferente de astrologia."
+        ]
+      },
+      {
+        "word": "Gravidade",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É uma interação associada à massa.",
+          "Ajuda a manter objetos próximos à superfície da Terra.",
+          "Também influencia órbitas no espaço."
+        ]
+      },
+      {
+        "word": "Átomo",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É uma unidade básica da matéria.",
+          "Possui núcleo e elétrons.",
+          "Prótons e nêutrons ficam no núcleo."
+        ]
+      },
+      {
+        "word": "Vulcão",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É uma abertura ou estrutura geológica.",
+          "Pode liberar lava, cinzas e gases.",
+          "Existem vulcões ativos, dormentes e extintos."
+        ]
+      },
+      {
+        "word": "Ecologia",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "Estuda as relações entre seres vivos e ambiente.",
+          "Analisa ecossistemas.",
+          "Considera fatores bióticos e abióticos."
+        ]
+      },
+      {
+        "word": "Mitocôndria",
+        "difficulty": 5,
+        "language": "pt",
+        "hints": [
+          "É uma organela celular.",
+          "Está relacionada à produção de energia.",
+          "É encontrada em células eucarióticas."
+        ]
+      },
+      {
+        "word": "Espectroscopia",
+        "difficulty": 6,
+        "language": "pt",
+        "hints": [
+          "É um conjunto de técnicas científicas.",
+          "Analisa a interação entre matéria e radiação.",
+          "É usada em diversas áreas da física e da química."
+        ]
+      },
+      {
+        "word": "Eletromagnetismo",
+        "difficulty": 7,
+        "language": "pt",
+        "hints": [
+          "É uma área da física.",
+          "Estuda fenômenos elétricos e magnéticos.",
+          "Está relacionada às ondas eletromagnéticas e às cargas elétricas."
+        ]
+      }
     ],
     "Música": [
-      {"word":"Violino","difficulty":2,"language":"pt","hints":["É um instrumento de cordas.","É tocado normalmente com um arco.","É usado em orquestras e diversos gêneros musicais."]},
-      {"word":"Piano","difficulty":1,"language":"pt","hints":["É um instrumento de teclas.","Produz som por meio de cordas acionadas por martelos.","Pode ser usado em vários estilos musicais."]},
-      {"word":"Guitarra","difficulty":2,"language":"pt","hints":["É um instrumento de cordas muito usado em bandas.","Existem versões elétricas e acústicas.","É comum em rock e outros estilos."]},
-      {"word":"Bateria","difficulty":1,"language":"pt","hints":["É um conjunto de instrumentos de percussão.","É comum em bandas.","É tocada com baquetas e pedais."]},
-      {"word":"Microfone","difficulty":1,"language":"pt","hints":["É usado para captar sons.","É comum em shows, gravações e apresentações.","Pode transformar ondas sonoras em sinal elétrico."]},
-      {"word":"Orquestra","difficulty":3,"language":"pt","hints":["É um grande conjunto de músicos.","Pode reunir instrumentos de cordas, sopros e percussão.","É comum na música clássica."]}
+      {
+        "word": "Violino",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É um instrumento de cordas.",
+          "É tocado normalmente com um arco.",
+          "É usado em orquestras e diversos gêneros musicais."
+        ]
+      },
+      {
+        "word": "Piano",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É um instrumento de teclas.",
+          "Produz som por meio de cordas acionadas por martelos.",
+          "Pode ser usado em vários estilos musicais."
+        ]
+      },
+      {
+        "word": "Guitarra",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É um instrumento de cordas muito usado em bandas.",
+          "Existem versões elétricas e acústicas.",
+          "É comum em rock e outros estilos."
+        ]
+      },
+      {
+        "word": "Bateria",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É um conjunto de instrumentos de percussão.",
+          "É comum em bandas.",
+          "É tocada com baquetas e pedais."
+        ]
+      },
+      {
+        "word": "Microfone",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É usado para captar sons.",
+          "É comum em shows, gravações e apresentações.",
+          "Pode transformar ondas sonoras em sinal elétrico."
+        ]
+      },
+      {
+        "word": "Orquestra",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É um grande conjunto de músicos.",
+          "Pode reunir instrumentos de cordas, sopros e percussão.",
+          "É comum na música clássica."
+        ]
+      },
+      {
+        "word": "Clarinete",
+        "difficulty": 5,
+        "language": "pt",
+        "hints": [
+          "É um instrumento de sopro.",
+          "Possui uma única palheta em seu modelo mais comum.",
+          "É usado em orquestras, bandas e outros grupos musicais."
+        ]
+      },
+      {
+        "word": "Contrabaixo",
+        "difficulty": 6,
+        "language": "pt",
+        "hints": [
+          "É um instrumento de cordas de grande porte.",
+          "Pode aparecer em orquestras e grupos populares.",
+          "Produz registros graves."
+        ]
+      },
+      {
+        "word": "Polirritmia",
+        "difficulty": 7,
+        "language": "pt",
+        "hints": [
+          "É uma técnica ou característica musical.",
+          "Combina padrões rítmicos diferentes simultaneamente.",
+          "Aparece em várias tradições musicais."
+        ]
+      }
     ],
     "Profissões": [
-      {"word":"Professor","difficulty":1,"language":"pt","hints":["Atua no ensino de estudantes.","Pode trabalhar em escolas ou outras instituições.","Planeja e conduz atividades de aprendizagem."]},
-      {"word":"Cientista","difficulty":2,"language":"pt","hints":["Trabalha com investigação e conhecimento.","Pode atuar em laboratórios ou universidades.","Usa métodos para testar hipóteses."]},
-      {"word":"Programador","difficulty":2,"language":"pt","hints":["Trabalha com software e código.","Pode desenvolver sites, sistemas ou jogos.","Usa linguagens de programação."]},
-      {"word":"Médico","difficulty":1,"language":"pt","hints":["É um profissional da área da saúde.","Avalia pessoas e doenças.","Pode atuar em diferentes especialidades."]},
-      {"word":"Arquiteto","difficulty":3,"language":"pt","hints":["Trabalha com projetos de espaços e construções.","Pode planejar edifícios e ambientes.","Combina aspectos técnicos e de projeto."]},
-      {"word":"Fotógrafo","difficulty":2,"language":"pt","hints":["Trabalha com produção de imagens.","Pode atuar em eventos, estúdios ou natureza.","Usa câmeras e técnicas de composição."]}
+      {
+        "word": "Professor",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "Atua no ensino de estudantes.",
+          "Pode trabalhar em escolas ou outras instituições.",
+          "Planeja e conduz atividades de aprendizagem."
+        ]
+      },
+      {
+        "word": "Cientista",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "Trabalha com investigação e conhecimento.",
+          "Pode atuar em laboratórios ou universidades.",
+          "Usa métodos para testar hipóteses."
+        ]
+      },
+      {
+        "word": "Programador",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "Trabalha com software e código.",
+          "Pode desenvolver sites, sistemas ou jogos.",
+          "Usa linguagens de programação."
+        ]
+      },
+      {
+        "word": "Médico",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É um profissional da área da saúde.",
+          "Avalia pessoas e doenças.",
+          "Pode atuar em diferentes especialidades."
+        ]
+      },
+      {
+        "word": "Arquiteto",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "Trabalha com projetos de espaços e construções.",
+          "Pode planejar edifícios e ambientes.",
+          "Combina aspectos técnicos e de projeto."
+        ]
+      },
+      {
+        "word": "Fotógrafo",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "Trabalha com produção de imagens.",
+          "Pode atuar em eventos, estúdios ou natureza.",
+          "Usa câmeras e técnicas de composição."
+        ]
+      },
+      {
+        "word": "Veterinário",
+        "difficulty": 5,
+        "language": "pt",
+        "hints": [
+          "É um profissional da área animal.",
+          "Atua na prevenção, diagnóstico e tratamento de problemas de saúde.",
+          "Pode trabalhar com animais domésticos ou de outras espécies."
+        ]
+      },
+      {
+        "word": "Paleontólogo",
+        "difficulty": 6,
+        "language": "pt",
+        "hints": [
+          "Estuda fósseis e a história da vida no passado.",
+          "Pode trabalhar com restos e vestígios de organismos antigos.",
+          "Usa evidências geológicas e biológicas em suas pesquisas."
+        ]
+      },
+      {
+        "word": "Cartógrafo",
+        "difficulty": 7,
+        "language": "pt",
+        "hints": [
+          "Trabalha com representação e produção de mapas.",
+          "Pode usar dados geográficos e sistemas digitais.",
+          "Atua em áreas ligadas à cartografia e ao mapeamento."
+        ]
+      }
     ],
     "Natureza": [
-      {"word":"Floresta","difficulty":2,"language":"pt","hints":["É uma grande área com muitas árvores.","Pode abrigar muitos animais e plantas.","Existem diferentes tipos ao redor do mundo."]},
-      {"word":"Montanha","difficulty":2,"language":"pt","hints":["É uma elevação natural do relevo.","Pode atingir grandes altitudes.","Algumas possuem neve em seus picos."]},
-      {"word":"Oceano","difficulty":2,"language":"pt","hints":["É uma enorme extensão de água salgada.","Cobre grande parte da superfície terrestre.","Possui diferentes ecossistemas."]},
-      {"word":"Cachoeira","difficulty":2,"language":"pt","hints":["É uma queda de água natural.","Pode ocorrer em rios.","Existem cachoeiras de diferentes tamanhos."]},
-      {"word":"Deserto","difficulty":2,"language":"pt","hints":["É uma região com baixa disponibilidade de água.","Pode ser quente ou fria.","Sua vegetação costuma ser adaptada a condições secas."]},
-      {"word":"Vulcão","difficulty":2,"language":"pt","hints":["É uma formação ligada à atividade geológica.","Pode emitir lava e gases.","Alguns fazem parte de cadeias montanhosas."]}
+      {
+        "word": "Floresta",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É uma grande área com muitas árvores.",
+          "Pode abrigar muitos animais e plantas.",
+          "Existem diferentes tipos ao redor do mundo."
+        ]
+      },
+      {
+        "word": "Montanha",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É uma elevação natural do relevo.",
+          "Pode atingir grandes altitudes.",
+          "Algumas possuem neve em seus picos."
+        ]
+      },
+      {
+        "word": "Oceano",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É uma enorme extensão de água salgada.",
+          "Cobre grande parte da superfície terrestre.",
+          "Possui diferentes ecossistemas."
+        ]
+      },
+      {
+        "word": "Cachoeira",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É uma queda de água natural.",
+          "Pode ocorrer em rios.",
+          "Existem cachoeiras de diferentes tamanhos."
+        ]
+      },
+      {
+        "word": "Deserto",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É uma região com baixa disponibilidade de água.",
+          "Pode ser quente ou fria.",
+          "Sua vegetação costuma ser adaptada a condições secas."
+        ]
+      },
+      {
+        "word": "Vulcão",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É uma formação ligada à atividade geológica.",
+          "Pode emitir lava e gases.",
+          "Alguns fazem parte de cadeias montanhosas."
+        ]
+      },
+      {
+        "word": "Manguezal",
+        "difficulty": 5,
+        "language": "pt",
+        "hints": [
+          "É um ecossistema costeiro.",
+          "Ocorre em áreas de transição entre ambientes terrestre e marinho.",
+          "Possui espécies adaptadas a água salobra e sedimentos."
+        ]
+      },
+      {
+        "word": "Estalagmite",
+        "difficulty": 6,
+        "language": "pt",
+        "hints": [
+          "É uma formação mineral encontrada em cavernas.",
+          "Cresce a partir do chão.",
+          "Forma-se pela deposição de minerais transportados pela água."
+        ]
+      },
+      {
+        "word": "Bioluminescência",
+        "difficulty": 7,
+        "language": "pt",
+        "hints": [
+          "É a produção de luz por organismos vivos.",
+          "Pode ser observada em alguns animais marinhos e outros seres.",
+          "É resultado de reações químicas específicas."
+        ]
+      }
     ],
     "Livros": [
-      {"word":"Biblioteca","difficulty":2,"language":"pt","hints":["É um lugar onde livros podem ser consultados.","Pode oferecer empréstimos de obras.","Também pode ser um espaço de estudo."]},
-      {"word":"Hobbit","difficulty":2,"language":"pt","hints":["É uma criatura de uma famosa obra de fantasia.","Bilbo é um personagem ligado a ela.","A história se passa na Terra-média."]},
-      {"word":"Dracula","difficulty":3,"language":"pt","hints":["É uma obra clássica de terror.","O personagem principal é associado a vampiros.","Foi escrita por Bram Stoker."]},
-      {"word":"Alice","difficulty":2,"language":"pt","hints":["É protagonista de uma famosa história de fantasia.","Cai em um lugar cheio de personagens curiosos.","A obra foi escrita por Lewis Carroll."]},
-      {"word":"Percy Jackson","difficulty":3,"language":"pt","hints":["É protagonista de uma série de livros de fantasia.","A história envolve mitologia grega.","É filho de Poseidon."]},
-      {"word":"Frankenstein","difficulty":4,"language":"pt","hints":["É um clássico da literatura gótica.","Foi escrito por Mary Shelley.","A história envolve ciência e uma criatura criada artificialmente."]}
+      {
+        "word": "Biblioteca",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É um lugar onde livros podem ser consultados.",
+          "Pode oferecer empréstimos de obras.",
+          "Também pode ser um espaço de estudo."
+        ]
+      },
+      {
+        "word": "Hobbit",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É uma criatura de uma famosa obra de fantasia.",
+          "Bilbo é um personagem ligado a ela.",
+          "A história se passa na Terra-média."
+        ]
+      },
+      {
+        "word": "Dracula",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É uma obra clássica de terror.",
+          "O personagem principal é associado a vampiros.",
+          "Foi escrita por Bram Stoker."
+        ]
+      },
+      {
+        "word": "Alice",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É protagonista de uma famosa história de fantasia.",
+          "Cai em um lugar cheio de personagens curiosos.",
+          "A obra foi escrita por Lewis Carroll."
+        ]
+      },
+      {
+        "word": "Percy Jackson",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É protagonista de uma série de livros de fantasia.",
+          "A história envolve mitologia grega.",
+          "É filho de Poseidon."
+        ]
+      },
+      {
+        "word": "Frankenstein",
+        "difficulty": 4,
+        "language": "pt",
+        "hints": [
+          "É um clássico da literatura gótica.",
+          "Foi escrito por Mary Shelley.",
+          "A história envolve ciência e uma criatura criada artificialmente."
+        ]
+      },
+      {
+        "word": "Odisseia",
+        "difficulty": 5,
+        "language": "pt",
+        "hints": [
+          "É um poema épico da Grécia Antiga.",
+          "É tradicionalmente atribuído a Homero.",
+          "A obra acompanha a viagem de retorno de Odisseu."
+        ]
+      },
+      {
+        "word": "Crime e Castigo",
+        "difficulty": 6,
+        "language": "pt",
+        "hints": [
+          "É um romance de Fiódor Dostoiévski.",
+          "A história acompanha Raskólnikov.",
+          "Explora dilemas morais e psicológicos."
+        ]
+      },
+      {
+        "word": "Cem Anos de Solidão",
+        "difficulty": 7,
+        "language": "pt",
+        "hints": [
+          "É um romance de Gabriel García Márquez.",
+          "Conta a história da família Buendía.",
+          "A narrativa está ligada à cidade fictícia de Macondo."
+        ]
+      }
     ],
     "Super-heróis": [
-      {"word":"Batman","difficulty":1,"language":"pt","hints":["É um herói ligado a Gotham City.","Não possui superpoderes naturais.","Usa tecnologia e treinamento para combater o crime."]},
-      {"word":"Homem-Aranha","difficulty":3,"language":"pt","hints":["É um herói da Marvel.","Pode escalar superfícies.","É associado à cidade de Nova York."]},
-      {"word":"Superman","difficulty":2,"language":"pt","hints":["É um herói associado a Metrópolis.","É conhecido por voar e ter grande força.","Seu nome civil é Clark Kent."]},
-      {"word":"Flash","difficulty":1,"language":"pt","hints":["É um herói conhecido por sua velocidade.","É associado à DC.","A identidade mais famosa é Barry Allen."]},
-      {"word":"Mulher-Maravilha","difficulty":3,"language":"pt","hints":["É uma heroína da DC.","É ligada à ilha de Themyscira.","Usa equipamentos como laço e braceletes."]},
-      {"word":"Hulk","difficulty":1,"language":"pt","hints":["É um personagem da Marvel.","É conhecido por sua grande força.","Bruce Banner está ligado à sua identidade humana."]}
+      {
+        "word": "Batman",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É um herói ligado a Gotham City.",
+          "Não possui superpoderes naturais.",
+          "Usa tecnologia e treinamento para combater o crime."
+        ]
+      },
+      {
+        "word": "Homem-Aranha",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É um herói da Marvel.",
+          "Pode escalar superfícies.",
+          "É associado à cidade de Nova York."
+        ]
+      },
+      {
+        "word": "Superman",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É um herói associado a Metrópolis.",
+          "É conhecido por voar e ter grande força.",
+          "Seu nome civil é Clark Kent."
+        ]
+      },
+      {
+        "word": "Flash",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É um herói conhecido por sua velocidade.",
+          "É associado à DC.",
+          "A identidade mais famosa é Barry Allen."
+        ]
+      },
+      {
+        "word": "Mulher-Maravilha",
+        "difficulty": 3,
+        "language": "pt",
+        "hints": [
+          "É uma heroína da DC.",
+          "É ligada à ilha de Themyscira.",
+          "Usa equipamentos como laço e braceletes."
+        ]
+      },
+      {
+        "word": "Hulk",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É um personagem da Marvel.",
+          "É conhecido por sua grande força.",
+          "Bruce Banner está ligado à sua identidade humana."
+        ]
+      },
+      {
+        "word": "Demolidor",
+        "difficulty": 5,
+        "language": "pt",
+        "hints": [
+          "É um herói da Marvel.",
+          "Vive e atua em Hell's Kitchen.",
+          "Apesar de ser cego, possui sentidos extraordinariamente desenvolvidos."
+        ]
+      },
+      {
+        "word": "Lanterna Verde",
+        "difficulty": 6,
+        "language": "pt",
+        "hints": [
+          "É um título de heróis da DC.",
+          "Os membros usam anéis movidos pela força de vontade.",
+          "Hal Jordan é uma das identidades mais conhecidas."
+        ]
+      },
+      {
+        "word": "Doutor Estranho",
+        "difficulty": 7,
+        "language": "pt",
+        "hints": [
+          "É um personagem da Marvel.",
+          "É conhecido por dominar artes místicas.",
+          "Stephen Strange é sua identidade civil."
+        ]
+      }
     ],
     "Escola": [
-      {"word":"Professor","difficulty":1,"language":"pt","hints":["Atua no ensino de estudantes.","Pode trabalhar em escolas.","Planeja atividades de aprendizagem."]},
-      {"word":"Caderno","difficulty":1,"language":"pt","hints":["É usado para fazer anotações.","Pode ter folhas pautadas ou lisas.","É comum em ambientes escolares."]},
-      {"word":"Matemática","difficulty":2,"language":"pt","hints":["É uma área estudada na escola.","Envolve números, relações e estruturas.","Pode trabalhar com álgebra e geometria."]},
-      {"word":"Quadro","difficulty":1,"language":"pt","hints":["Fica normalmente na frente da sala.","Pode ser usado para escrever explicações.","Pode ser branco, verde ou digital."]},
-      {"word":"Mochila","difficulty":1,"language":"pt","hints":["É usada para transportar materiais.","Pode carregar livros e cadernos.","É comum entre estudantes."]},
-      {"word":"Biblioteca","difficulty":2,"language":"pt","hints":["Pode existir dentro de uma escola.","Tem livros e materiais de consulta.","Também pode ser usada para estudar."]}
+      {
+        "word": "Professor",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "Atua no ensino de estudantes.",
+          "Pode trabalhar em escolas.",
+          "Planeja atividades de aprendizagem."
+        ]
+      },
+      {
+        "word": "Caderno",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É usado para fazer anotações.",
+          "Pode ter folhas pautadas ou lisas.",
+          "É comum em ambientes escolares."
+        ]
+      },
+      {
+        "word": "Matemática",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É uma área estudada na escola.",
+          "Envolve números, relações e estruturas.",
+          "Pode trabalhar com álgebra e geometria."
+        ]
+      },
+      {
+        "word": "Quadro",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "Fica normalmente na frente da sala.",
+          "Pode ser usado para escrever explicações.",
+          "Pode ser branco, verde ou digital."
+        ]
+      },
+      {
+        "word": "Mochila",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É usada para transportar materiais.",
+          "Pode carregar livros e cadernos.",
+          "É comum entre estudantes."
+        ]
+      },
+      {
+        "word": "Biblioteca",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "Pode existir dentro de uma escola.",
+          "Tem livros e materiais de consulta.",
+          "Também pode ser usada para estudar."
+        ]
+      },
+      {
+        "word": "Trigonometria",
+        "difficulty": 5,
+        "language": "pt",
+        "hints": [
+          "É uma área da matemática.",
+          "Estuda relações entre ângulos e lados.",
+          "É muito usada em problemas envolvendo triângulos."
+        ]
+      },
+      {
+        "word": "Epistemologia",
+        "difficulty": 6,
+        "language": "pt",
+        "hints": [
+          "É uma área da filosofia.",
+          "Estuda questões relacionadas ao conhecimento.",
+          "Analisa temas como justificação, crença e conhecimento."
+        ]
+      },
+      {
+        "word": "Combinatória",
+        "difficulty": 7,
+        "language": "pt",
+        "hints": [
+          "É uma área da matemática.",
+          "Estuda formas de contar e organizar possibilidades.",
+          "É usada em problemas de combinações e arranjos."
+        ]
+      }
     ],
     "Outros": [
-      {"word":"Relógio","difficulty":2,"language":"pt","hints":["É usado para medir ou indicar o tempo.","Pode ser digital ou analógico.","Pode ser usado no pulso ou em uma parede."]},
-      {"word":"Chave","difficulty":1,"language":"pt","hints":["É usada para abrir ou fechar uma fechadura.","Pode ser metálica ou eletrônica.","Muitas pessoas carregam uma diariamente."]},
-      {"word":"Cinema","difficulty":1,"language":"pt","hints":["É um lugar onde filmes são exibidos.","Normalmente possui uma grande tela.","Também é uma forma de arte audiovisual."]},
-      {"word":"Fotografia","difficulty":2,"language":"pt","hints":["É uma imagem registrada por uma câmera.","Pode preservar momentos e lugares.","Pode ser digital ou impressa."]},
-      {"word":"Viagem","difficulty":1,"language":"pt","hints":["Envolve deslocamento para outro lugar.","Pode acontecer por lazer, estudo ou trabalho.","Pode ser curta ou longa."]},
-      {"word":"Misterio","difficulty":2,"language":"pt","hints":["É algo que ainda não foi explicado ou descoberto.","A investigação tenta encontrar respostas.","É comum em histórias de detetive."]}
+      {
+        "word": "Relógio",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É usado para medir ou indicar o tempo.",
+          "Pode ser digital ou analógico.",
+          "Pode ser usado no pulso ou em uma parede."
+        ]
+      },
+      {
+        "word": "Chave",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É usada para abrir ou fechar uma fechadura.",
+          "Pode ser metálica ou eletrônica.",
+          "Muitas pessoas carregam uma diariamente."
+        ]
+      },
+      {
+        "word": "Cinema",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "É um lugar onde filmes são exibidos.",
+          "Normalmente possui uma grande tela.",
+          "Também é uma forma de arte audiovisual."
+        ]
+      },
+      {
+        "word": "Fotografia",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É uma imagem registrada por uma câmera.",
+          "Pode preservar momentos e lugares.",
+          "Pode ser digital ou impressa."
+        ]
+      },
+      {
+        "word": "Viagem",
+        "difficulty": 1,
+        "language": "pt",
+        "hints": [
+          "Envolve deslocamento para outro lugar.",
+          "Pode acontecer por lazer, estudo ou trabalho.",
+          "Pode ser curta ou longa."
+        ]
+      },
+      {
+        "word": "Misterio",
+        "difficulty": 2,
+        "language": "pt",
+        "hints": [
+          "É algo que ainda não foi explicado ou descoberto.",
+          "A investigação tenta encontrar respostas.",
+          "É comum em histórias de detetive."
+        ]
+      },
+      {
+        "word": "Ampulheta",
+        "difficulty": 5,
+        "language": "pt",
+        "hints": [
+          "É um instrumento tradicional de medição do tempo.",
+          "Usa areia ou outro material granular.",
+          "A passagem do material ocorre entre dois recipientes."
+        ]
+      },
+      {
+        "word": "Origami",
+        "difficulty": 6,
+        "language": "pt",
+        "hints": [
+          "É uma arte tradicional de dobradura de papel.",
+          "É associada à cultura japonesa.",
+          "Permite criar formas sem cortar o papel em sua forma clássica."
+        ]
+      },
+      {
+        "word": "Labirinto",
+        "difficulty": 7,
+        "language": "pt",
+        "hints": [
+          "É uma estrutura ou representação com caminhos complexos.",
+          "Pode possuir vários caminhos que dificultam encontrar a saída.",
+          "Aparece em jogos, histórias e arquitetura."
+        ]
+      }
     ]
   }
 }
